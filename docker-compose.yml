@@ -16,19 +16,13 @@ services:
       - nginx_network
 
   db:
-    image: postgres:latest
+    image: postgres
     env_file:
       - .env
     volumes:
-      - ps_data:/var/lib/postgresql/data
-      - ./db_init:/docker-entrypoint-initdb.d
+      - postgres_data:/var/lib/postgresql/data
     networks:
       - nginx_network
-    healthcheck:
-      test: [ "CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'" ]
-      interval: 10s
-      timeout: 5s
-      retries: 5
 
   redis:
     image: redis:latest
@@ -49,7 +43,7 @@ services:
       - nginx_network
 
 volumes:
-  ps_data:
+  postgres_data:
   pgadmin_data:
   metabase_data:
 
