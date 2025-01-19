@@ -205,3 +205,15 @@ class PaperAbstract(models.Model):
         msg = (f"New Abstract {self.title}, Submitted  by {self.user.full_name} ({self.user.email})"
                f" on the theme {self.theme} use the link to download the file https://marine.cusat.ac.in{self.file.url}")
         threading.Thread(target=send_email, args=(msg, EMAIL_HOST_USER, "New abstract submission")).start()
+
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    subject = models.CharField(max_length=150)
+    message = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.name} - {self.subject}"

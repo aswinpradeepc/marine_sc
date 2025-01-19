@@ -80,7 +80,7 @@ setInterval(updateCountdown, 1000);
 
 // Contact Form Handling
 document.getElementById('contactForm').addEventListener('submit', function(e) {
-    e.preventDefault();
+    // e.preventDefault();
     
     // Get form values
     const formData = {

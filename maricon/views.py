@@ -2,9 +2,11 @@ import logging
 
 from django.contrib import messages
 from django.contrib.auth import login
+from django.http import HttpResponse
 # import send email function
 
 from django.shortcuts import redirect, render
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
 
 from base.utils import sendmail
@@ -14,7 +16,7 @@ from base.utils import sendmail
 from payment.utils import payment_completed
 from .forms import PaperAbstractForm
 from .models import Faq, Sponsor, Schedule, Gallery, CommitteeMember, Committee, OTP, PaperAbstract, Speaker, \
-    THEMES
+    THEMES, Contact
 
 logger = logging.getLogger("db")
 
@@ -307,6 +309,22 @@ class TeamView(AbstractView):
         ]
 
         return context
+
+
+@csrf_exempt
+def contact_form(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        # Save data to the model
+        con = Contact.objects.create(name=name, email=email, subject=subject, message=message)
+        con.save()
+
+        # Redirect or show success message
+        return redirect('maricon')
 
 
 class PrivacyPolicyView(AbstractView):

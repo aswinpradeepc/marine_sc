@@ -1,7 +1,7 @@
 from django.urls import path
 
 from .views import (IndexView, RegisterView, OtpView, LoginView,
-                    submission_view, TeamView, RefundView, TermsView, PrivacyPolicyView, DisclaimerView, PosterGuidelinesView, AbstractGuidelinesView)
+                    submission_view, TeamView, RefundView, TermsView, PrivacyPolicyView, DisclaimerView, PosterGuidelinesView, AbstractGuidelinesView,contact_form)
 
 urlpatterns = [
     path('', IndexView.as_view(), name='maricon'),
@@ -18,4 +18,5 @@ urlpatterns = [
     path('disclaimer/', DisclaimerView.as_view(), name='disclaimer'),
     path('poster-guidelines/', PosterGuidelinesView.as_view(), name='poster-guidelines'),
     path('abstract-guidelines/', AbstractGuidelinesView.as_view(), name='abstract-guidelines'),
+    path('conatct_form', contact_form, name='contact_form'),
 ]

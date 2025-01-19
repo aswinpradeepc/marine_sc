@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, Committee, OTP, PaperAbstract
+from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, Committee, OTP, PaperAbstract, Contact
 
 admin.site.register(CommitteeMember)
 admin.site.register(Gallery)
@@ -25,3 +25,10 @@ class PaperAbstractAdmin(admin.ModelAdmin):
     list_display = ('title', 'authors', 'created_at','presentation')
     search_fields = ('title', 'authors')
     list_filter = ('created_at', 'theme','presentation')
+
+
+@admin.register(Contact)
+class ContactAdmin(admin.ModelAdmin):
+    list_display = ('name', 'email', 'subject', 'created_at')
+    search_fields = ('name', 'email', 'subject')
+    list_filter = ('created_at',)
