@@ -16,13 +16,24 @@ services:
       - nginx_network
 
   db:
-    image: postgres
+    image: postgres:latest
     env_file:
       - .env
+    environment:
+      POSTGRES_USER: postgres  # Ensure the default user is created
+      POSTGRES_PASSWORD: marine@cusat  # The password for the postgres user
+      POSTGRES_DB: marine_db  # The database to be created
     volumes:
       - postgres_data:/var/lib/postgresql/data
     networks:
       - nginx_network
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: always  # Ensure the container restarts if it fails
+
 
   redis:
     image: redis:latest
