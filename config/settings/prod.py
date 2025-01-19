@@ -30,18 +30,12 @@ ALLOWED_HOSTS = [
 
 # CSRF settings
 CSRF_TRUSTED_ORIGINS = [
-    # '10.0.6.27',
-    # "icmbgsd2025.cusat.ac.in",
-    # "localhost",
-    # "127.0.0.1",
+    "https://icmbgsd2025.cusat.ac.in"
 ]
 
 # CORS settings
 CORS_ORIGIN_WHITELIST = [
-    # '10.0.6.27',
-    # "icmbgsd2025.cusat.ac.in",
-    # "localhost",
-    # "127.0.0.1",
+    "https://icmbgsd2025.cusat.ac.in",
 ]
 
 CORS_ORIGIN_ALLOW_ALL = False
