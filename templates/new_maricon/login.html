@@ -29,6 +29,9 @@
     <link href={% static "assets/vendor/aos/aos.css" %} rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/static/img/logos/favicon.ico">
     <link href={% static 'assets/css/main.css' %} rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static '\js\script.js' %}" defer></script>
+
     {% if msg %}
         <script>
             window.onload = function () {
@@ -41,71 +44,53 @@
 </head>
 
 <body>
+    {% include "new_maricon/new_nav.html" %}
 
-{% include "new_maricon/header.html" %}
+    
 <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-        <div class="page-header d-flex align-items-center"
-             style="background-image: url({% static 'img/maricon_header.png' %})">
-            <div class="container position-relative">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <h2>Login</h2>
+
+    <section  class="d-flex align-items-center justify-content-center py-5" style="background-color: #eaf8f7; min-height: 100vh;">
+        <div class="container">
+            <div class="row justify-content-center w-100">
+                <div class="col-lg-6 text-center">
+                    <div class="p-4 rounded" style="background-color: #ffffff;">
+                        {% if err %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ msg }}
+                            </div>
+                        {% endif %}
+                        
+                        {% if otp %}
+                            <h4 class="mb-3 text-secondary">OTP Verification</h4>
+                            <p class="text-muted">An OTP has been sent to your email. Please enter the OTP below to continue.</p>
+                            <form action="/login/otp/" method="post" class="mt-4">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <input name="otp" type="text" class="form-control" placeholder="Enter OTP" required>
+                                </div>
+                                <input name="email" type="email" hidden value="{{ email }}">
+                                <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
+                            </form>
+                        {% else %}
+                            <h4 class="mb-3 text-secondary">Welcome Back</h4>
+                            <p class="text-muted">Enter your email to continue.</p>
+                            <form action="/login/" method="post" class="mt-4">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <input name="email" type="email" class="form-control" placeholder="Enter your email" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Next</button>
+                            </form>
+                            <p class="text-muted mt-3">Don't have an account? <a href="/register/" class="text-primary">Sign up</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-        <nav>
-            <div class="container">
-                <ol>
-                    <li><a href="/">Home</a></li>
-                    <li>Login</li>
-                </ol>
-            </div>
-        </nav>
-    </div><!-- End Breadcrumbs -->
-
-    <section id="hero " class="hero d-flex align-items-center" style="background-color: #f3f6fc">
-        <div class="container">
-            <div class="row gy-4 d-flex justify-content-center">
-                <div class="d-flex flex-column justify-content-center col-lg-8 ">
-                    {% if err %}
-                        <h5 class="text-danger">{{ msg }}</h5>
-                    {% endif %}
-                    {% if otp %}
-                        <h5 class="text-black-50">An OTP has been sent to your email. Please enter the OTP to
-                            continue </h5>
-                        <form action="/login/otp/" class="form-search d-flex align-items-stretch mb-3"
-                              data-aos="fade-up" method="post"
-                              data-aos-delay="50">
-                            {% csrf_token %}
-                            <input name="otp" type="text" class="form-control"
-                                   placeholder="Enter the otp to continue">
-                            <input name="email" type="email" hidden value="{{ email }}">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    {% else %}
-                        <form action="/login/" class="form-search d-flex align-items-stretch mb-3"
-                              data-aos="fade-up" method="post"
-                              data-aos-delay="50">
-                            {% csrf_token %}
-                            <input name="email" type="email" class="form-control"
-                                   placeholder="Enter Email Id to continue">
-                            <button type="submit" class="btn btn-primary">Next</button>
-                        </form>
-                        <p class="text-black-50">Don't have an account ? <a href="/register/">Sign up</a></p>
-                    {% endif %}
-                </div>
-
-
-            </div>
-        </div>
     </section><!-- End Hero Section -->
-
 </main><!-- End #main -->
-{% include "new_maricon/footer.html" %}
+{% include "new_maricon/new_footer.html" %}
 
 <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

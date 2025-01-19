@@ -26,6 +26,8 @@
     <link href={% static "assets/vendor/swiper/swiper-bundle.min.css" %} rel="stylesheet">
     <link href={% static "assets/vendor/aos/aos.css" %} rel="stylesheet">
     <link href={% static 'assets/css/main.css' %} rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
     {% if err %}
     <script>
@@ -41,58 +43,39 @@
 
 <body>
 
-    {% include "new_maricon/header.html" %}
+    {% include "new_maricon/new_nav.html" %}
     <main id="main">
 
-        <!-- Breadcrumbs -->
-        <div class="breadcrumbs">
-            <div class="page-header d-flex align-items-center"
-                style="background-image: url({% static 'img/maricon_header.png' %})">
-                <div class="container position-relative">
-                    <div class="row d-flex justify-content-center">
-                        <div class="col-lg-6 text-center">
-                            <h2>Confirm Payment</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <nav>
-                <div class="container">
-                    <ol>
-                        <li><a href="/maricon/">Home</a></li>
-                        <li>Confirm Payment</li>
-                    </ol>
-                </div>
-            </nav>
-        </div>
-
-        <section id="hero " class="hero d-flex align-items-center" style="background-color: #f3f6fc">
+        <section class="d-flex align-items-center justify-content-center py-5" style="background-color: #eaf8f7; min-height: 100vh;">
             <div class="container">
-                <div class="row gy-4 d-flex justify-content-center">
-                    <div class="d-flex flex-column justify-content-center col-lg-8">
-                        {% if err %}
-                        <h5 class="text-danger">{{ err }}</h5>
-                        {% endif %}
-                        <h2 class="text-dark">Payment Details</h2>
-                        <div class="text-dark">
-                            Name : {{ payment.user.full_name }}
-                        </div>
-                        <div class="text-dark">
-                            Category : {{ payment.category }}
-                        </div>
-                        <div class="text-dark">
-                            Total Amount : {{ payment.amount }} {{ payment.currency }}
-                        </div>
-                        <div class="text-center">
-                            <button id="rzp-button1" class="btn btn-primary">Proceed to Pay</button>
+                <div class="row justify-content-center w-100">
+                    <div class="col-lg-6 text-center">
+                        <div class="p-4 rounded" style="background-color: #ffffff;">
+                            {% if err %}
+                                <div class="alert alert-danger" role="alert">
+                                    {{ err }}
+                                </div>
+                            {% endif %}
+                            <h2 class="text-dark mb-4">Payment Details</h2>
+                            <div class="mb-3 text-dark">
+                                <strong>Name:</strong> {{ payment.user.full_name }}
+                            </div>
+                            <div class="mb-3 text-dark">
+                                <strong>Category:</strong> {{ payment.category }}
+                            </div>
+                            <div class="mb-4 text-dark">
+                                <strong>Total Amount:</strong> {{ payment.amount }} {{ payment.currency }}
+                            </div>
+                            <button id="rzp-button1" class="btn btn-primary w-100">Proceed to Pay</button>
                         </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </section><!-- End Hero Section -->
+        
 
     </main>
-    {% include "new_maricon/footer.html" %}
+    {% include "new_maricon/new_footer.html" %}
 
     <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i></a>

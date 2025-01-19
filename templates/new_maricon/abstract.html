@@ -23,6 +23,8 @@
     <link href={% static "assets/vendor/glightbox/css/glightbox.min.css" %} rel="stylesheet">
     <link href={% static "assets/vendor/swiper/swiper-bundle.min.css" %} rel="stylesheet">
     <link href={% static "assets/vendor/aos/aos.css" %} rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <script src="{% static '\js\script.js' %}" defer></script>
 
     <link href={% static 'assets/css/main.css' %} rel="stylesheet">
     {% if msg %}
@@ -38,119 +40,91 @@
 
 <body>
 
-{% include "new_maricon/header.html" %}
+    {% include "new_maricon/new_nav.html" %}
 <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-        <div class="page-header d-flex align-items-center"
-             style="background-image: url({% static 'img/maricon_header.png' %})">
-            <div class="container position-relative">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <h2>Abstract Submission</h2>
-                        <a href="{% static 'doc/Abstract_Template.docx' %}"> Download Abstract Template here</a>
+
+    <section class=" d-flex align-items-center justify-content-center" style="background-color: #eaf8f7; min-height: 100vh;">
+        <div class="container">
+            <div class="row justify-content-center w-100">
+                <div class="col-lg-6 text-center">
+                    <div class="p-4 rounded" style="background-color: #ffffff;">
+                        {% if payment %}
+                            <h4 class="text-primary">{{ payment }}</h4>
+                        {% endif %}
+                        {% if abstract %}
+                            <div class="col-lg-12 justify-content-center align-items-center service-item d-flex text-dark" data-aos="fade-up">
+                                <div>
+                                    <h2 class="text-dark">Submitted Abstract</h2>
+                                    <h4 class="title">{{ abstract.title }}</h4>
+                                    <p class="description">{{ abstract.authors }}</p>
+                                    <a href="{{ abstract.file.url }}"
+                                       class="readmore stretched-link"><span>Abstract File</span><i
+                                            class="bi bi-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        {% else %}
+                            {% if err %}
+                                <h5 class="text-danger">{{ msg }}</h5>
+                            {% endif %}
+                            {% if form.errors %}
+                                <h5 class="text-danger">There was an error with your submission. Please check the form and
+                                    try again.</h5>
+                            {% endif %}
+                            {% if form.title.errors %}
+                                <h5 class="text-danger">{{ form.title.errors }}</h5>
+                            {% endif %}
+                            {% if form.authors.errors %}
+                                <h5 class="text-danger">{{ form.authors.errors }}</h5>
+                            {% endif %}
+                            {% if form.abstract.errors %}
+                                <h5 class="text-danger">{{ form.abstract.errors }}</h5>
+                            {% endif %}
+                            {% if form.file.errors %}
+                                <h5 class="text-danger">{{ form.file.errors }}</h5>
+                            {% endif %}
+    
+                            <form action="/abstract/" class="form-search mb-3" method="post" enctype="multipart/form-data"
+                                  data-aos="fade-up" data-aos-delay="50">
+                                {% csrf_token %}
+                                <h5 class="text-dark">Theme:</h5>
+                                <select name="theme" class="form-control mb-3" required>
+                                    <option value="">Select a theme</option>
+                                    {% for theme in themes %}
+                                        <option value="{{ theme }}">{{ theme }}</option>
+                                    {% endfor %}
+                                </select>
+    
+                                <input name="title" type="text" class="form-control mb-3" placeholder="Enter title of the abstract" required>
+    
+                                <input name="authors" type="text" class="form-control mb-3" placeholder="Enter authors name (comma separated)" required>
+    
+                                <input name="keywords" type="text" class="form-control mb-3" placeholder="Enter keywords name (comma separated)" required>
+    
+                                <select name="presentation" class="form-control mb-3" required>
+                                    <option value="">Select presentation type</option>
+                                    <option value="oral">oral</option>
+                                    <option value="poster">poster</option>
+                                </select>
+    
+                                <textarea name="abstract" class="form-control mb-3" placeholder="Enter abstract" required></textarea>
+    
+                                <input name="file" type="file" class="form-control mb-3" placeholder="Upload file" required>
+    
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-primary w-100">Submit</button>
+                                </div>
+                            </form>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-        <nav>
-            <div class="container">
-                <ol>
-                    <li><a href="/maricon/">Home</a></li>
-                    <li>Submission</li>
-                </ol>
-            </div>
-        </nav>
-    </div><!-- End Breadcrumbs -->
-
-    <section id="hero " class="hero d-flex align-items-center" style="background-color: #f3f6fc">
-        <div class="container">
-            <div class="row gy-4 d-flex justify-content-center">
-                <div id="featured-services" class="d-flex flex-column justify-content-center col-lg-8 ">
-                    {% if  payment %}
-                        <h4 class="text-primary">{{ payment }}</h4>
-                    {% endif %}
-                    {% if abstract %}
-                        <div class="col-lg-12 service-item d-flex text-dark" data-aos="fade-up">
-                            <div>
-                                <h2 class="text-dark">Submitted Abstract</h2>
-                                <h4 class="title">{{ abstract.title }}</h4>
-                                <p class="description">{{ abstract.authors }}</p>
-                                <a href="{{ abstract.file.url }}"
-                                   class="readmore stretched-link"><span>Abstract File</span><i
-                                        class="bi bi-arrow-right"></i></a>
-                            </div>
-                        </div>
-                    {% else %}
-                        {% if err %}
-                            <h5 class="text-danger">{{ msg }}</h5>
-                        {% endif %}
-                        {% if form.errors %}
-                            <h5 class="text-danger">There was an error with your submission. Please check the form and
-                                try
-                                again.</h5>
-                        {% endif %}
-                        {% if form.title.errors %}
-                            <h5 class="text-danger">{{ form.title.errors }}</h5>
-                        {% endif %}
-                        {% if form.authors.errors %}
-                            <h5 class="text-danger">{{ form.authors.errors }}</h5>
-                        {% endif %}
-                        {% if form.abstract.errors %}
-                            <h5 class="text-danger">{{ form.abstract.errors }}</h5>
-                        {% endif %}
-                        {% if form.file.errors %}
-                            <h5 class="text-danger">{{ form.file.errors }}</h5>
-                        {% endif %}
-
-                        <form action="/abstract/" class="form-search  mb-3"
-                              data-aos="fade-up" method="post" enctype="multipart/form-data"
-                              data-aos-delay="50">
-                            {% csrf_token %}
-                            <h5 class="text-dark">Theme:
-                            </h5>
-                            <select name="theme" class="form-control" required>
-                                <option value="">Select a theme</option>
-
-                                {% for theme in themes %}
-                                    <option value="{{ theme }}">{{ theme }}</option>
-                                {% endfor %}
-                                <input name="title" type="text" class="form-control"
-                                       placeholder="Enter title  of the abstract" required>
-
-                                <input name="authors" type="text" class="form-control"
-                                       placeholder="Enter authors name (comma seperated)" required>
-                                <input name="keywords" type="text" class="form-control"
-                                       placeholder="Enter keywords name (comma seperated)" required>
-                                <select name="presentation" class="form-control" required>
-                                    <option value="">Select presentation type</option>
-
-
-                                    <option value="oral">oral</option>
-                                    <option value="poster">poster</option>
-                                </select>
-
-                                <textarea name="abstract" class="form-control"
-                                          placeholder="Enter abstract" required></textarea>
-
-                                <input name="file" type="file" class="form-control"
-                                       placeholder="Upload file" required>
-
-                                <div class="text-center">
-                                    <button type="submit" class="btn btn-primary ">Submit</button>
-                                </div>
-                        </form>
-                    {% endif %}
-                </div>
-
-
-            </div>
-        </div>
     </section><!-- End Hero Section -->
+    
 
 </main><!-- End #main -->
-{% include "new_maricon/footer.html" %}
+{% include "new_maricon/new_footer.html" %}
 
 <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 

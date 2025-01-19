@@ -25,6 +25,8 @@
     <link href={% static "assets/vendor/glightbox/css/glightbox.min.css" %} rel="stylesheet">
     <link href={% static "assets/vendor/swiper/swiper-bundle.min.css" %} rel="stylesheet">
     <link href={% static "assets/vendor/aos/aos.css" %} rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 
     <link href={% static 'assets/css/main.css' %} rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/static/img/logos/favicon.ico">
@@ -44,97 +46,85 @@
 
 <body>
 
-{% include "new_maricon/header.html" %}
+{% include "new_maricon/new_nav.html" %}
 <main id="main">
 
-    <!-- ======= Breadcrumbs ======= -->
-    <div class="breadcrumbs">
-        <div class="page-header d-flex align-items-center"
-             style="background-image: url({% static 'img/maricon_header.png' %})">
-            <div class="container position-relative">
-                <div class="row d-flex justify-content-center">
-                    <div class="col-lg-6 text-center">
-                        <h2>Signup</h2>
+    <section class="d-flex align-items-center justify-content-center py-5" style="background-color: #eaf8f7; min-height: 100vh;">
+        <div class="container">
+            <div class="row justify-content-center w-100">
+                <div class="col-lg-6 text-center">
+                    <div class="p-4 rounded" style="background-color: #ffffff;">
+                        {% if err %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ msg }}
+                            </div>
+                        {% endif %}
+                        {% if form.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                There was an error with your submission. Please check the form and try again.
+                            </div>
+                        {% endif %}
+                        {% if form.full_name.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ form.full_name.errors }}
+                            </div>
+                        {% endif %}
+                        {% if form.email.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ form.email.errors }}
+                            </div>
+                        {% endif %}
+                        {% if form.mobile_number.errors %}
+                            <div class="alert alert-danger" role="alert">
+                                {{ form.mobile_number.errors }}
+                            </div>
+                        {% endif %}
+                        
+                        {% if otp %}
+                            <h4 class="mb-3 text-secondary">OTP Verification</h4>
+                            <p class="text-muted">An OTP has been sent to your email. Please enter the OTP below to continue.</p>
+                            <form action="/login/otp/" method="post" class="mt-4">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <input name="otp" type="text" class="form-control" placeholder="Enter OTP" required>
+                                </div>
+                                <input name="email" type="email" hidden value="{{ email }}">
+                                <button type="submit" class="btn btn-primary w-100">Verify OTP</button>
+                            </form>
+                        {% else %}
+                            <h4 class="mb-3 text-secondary">Sign Up</h4>
+                            <form action="/register/" method="post" class="mt-4">
+                                {% csrf_token %}
+                                <div class="mb-3">
+                                    <input name="full_name" type="text" class="form-control" placeholder="Enter Full Name" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input name="email" type="email" class="form-control" placeholder="Enter Email Id" required>
+                                </div>
+                                <div class="mb-3">
+                                    <select name="gender" class="form-control" required>
+                                        <option value="" disabled selected>Select Gender</option>
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <input name="mobile_number" type="tel" class="form-control" placeholder="Enter Mobile Number" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100">Sign Up</button>
+                            </form>
+                            <p class="text-muted mt-3">Already have an account? <a href="/login/" class="text-primary">Login</a></p>
+                        {% endif %}
                     </div>
                 </div>
             </div>
         </div>
-        <nav>
-            <div class="container">
-                <ol>
-                    <li><a href="/">Home</a></li>
-                    <li>Signup</li>
-                </ol>
-            </div>
-        </nav>
-    </div><!-- End Breadcrumbs -->
-
-    <section id="hero " class="hero d-flex align-items-center" style="background-color: #f3f6fc">
-        <div class="container">
-            <div class="row gy-4 d-flex justify-content-center">
-                <div class="d-flex flex-column justify-content-center col-lg-8 ">
-                    {% if err %}
-                        <h5 class="text-danger">{{ msg }}</h5>
-                    {% endif %}
-                    {% if form.errors %}
-                        <h5 class="text-danger">There was an error with your submission. Please check the form and try
-                            again.</h5>
-                    {% endif %}
-                    {% if form.full_name.errors %}
-                        <h5 class="text-danger">{{ form.full_name.errors }}</h5>
-                    {% endif %}
-                    {% if form.email.errors %}
-                        <h5 class="text-danger">{{ form.email.errors }}</h5>
-                    {% endif %}
-                    {% if form.mobile_number.errors %}
-                        <h5 class="text-danger">{{ form.mobile_number.errors }}</h5>
-                    {% endif %}
-                    {% if otp %}
-                        <form action="/login/otp/" class="form-search d-flex align-items-stretch mb-3"
-                              data-aos="fade-up" method="post"
-                              data-aos-delay="50">
-                            {% csrf_token %}
-                            <input name="otp" type="text" class="form-control"
-                                   placeholder="Enter the otp to continue">
-                            <input name="email" type="email" hidden value="{{ email }}">
-                            <button type="submit" class="btn btn-primary">Submit</button>
-                        </form>
-                    {% else %}
-                        <form action="/register/" class="form-search  mb-3"
-                              data-aos="fade-up" method="post"
-                              data-aos-delay="50">
-                            {% csrf_token %}
-                            <input name="full_name" type="text" class="form-control"
-                                   placeholder="Enter Full Name" required>
-
-                            <input name="email" type="email" class="form-control"
-                                   placeholder="Enter Email Id" required>
-
-                            <select name="gender" class="form-control" required>
-                                <option value="" disabled selected>Select Gender</option>
-                                <option value="male">Male</option>
-                                <option value="female">Female</option>
-                                <option value="other">Other</option>
-                            </select>
-
-                            <input name="mobile_number" type="tel" class="form-control"
-                                   placeholder="Enter Mobile Number" required>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary ">Sign Up</button>
-                            </div>
-                        </form>
-                        <p class="text-black-50">Already have an account ? <a href="/login/">Login</a></p>
-
-                    {% endif %}
-                </div>
-
-
-            </div>
-        </div>
     </section><!-- End Hero Section -->
+    
 
 </main><!-- End #main -->
-{% include "new_maricon/footer.html" %}
+{% include "new_maricon/new_footer.html" %}
 
 <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
