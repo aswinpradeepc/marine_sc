@@ -1,0 +1,664 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Maricon 2024</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href={% static "assets/vendor/bootstrap/css/bootstrap.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/bootstrap-icons/bootstrap-icons.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/fontawesome-free/css/all.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/glightbox/css/glightbox.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/swiper/swiper-bundle.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/aos/aos.css" %} rel="stylesheet">
+
+    <link href={% static 'assets/css/main.css' %} rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/img/logos/favicon.ico">
+    <script>
+        const countDownClock = (number = 100, format = 'seconds') => {
+
+            const d = document;
+            const daysElement = d.querySelector('.days');
+            const hoursElement = d.querySelector('.hours');
+            const minutesElement = d.querySelector('.minutes');
+            const secondsElement = d.querySelector('.seconds');
+            let countdown;
+            convertFormat(format);
+
+
+            function convertFormat(format) {
+                switch (format) {
+                    case 'seconds':
+                        return timer(number);
+                    case 'minutes':
+                        return timer(number * 60);
+                    case 'hours':
+                        return timer(number * 60 * 60);
+                    case 'days':
+                        return timer(number * 60 * 60 * 24);
+                }
+            }
+
+            function timer(seconds) {
+                const now = Date.now();
+                const then = now + seconds * 1000;
+
+                countdown = setInterval(() => {
+                    const secondsLeft = Math.round((then - Date.now()) / 1000);
+
+                    if (secondsLeft <= 0) {
+                        clearInterval(countdown);
+                        return;
+                    }
+                    ;
+
+                    displayTimeLeft(secondsLeft);
+
+                }, 1000);
+            }
+
+            function displayTimeLeft(seconds) {
+                daysElement.textContent = Math.floor(seconds / 86400);
+                hoursElement.textContent = Math.floor((seconds % 86400) / 3600);
+                minutesElement.textContent = Math.floor((seconds % 86400) % 3600 / 60);
+                secondsElement.textContent = seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60;
+            }
+        }
+        window.onload = function () {
+            const end_date = new Date("2024-04-08T00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = end_date - now;
+            const seconds = Math.floor(distance / 1000);
+            countDownClock(seconds, 'seconds');
+
+
+        }
+    </script>
+
+</head>
+
+<body>
+
+{% include "new_maricon/header.html" %}
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="hero d-flex align-items-center"
+         style="background-image: url({% static 'img/maricon_header_bg.webp' %})">
+    <div class="container">
+        <div class="row gy-4 ">
+            <div class="col-lg-8  d-flex flex-column justify-content-center">
+                <h1 class="font-weight-bold fade-up my-3">
+                    MARICON <span class="text-warning">2024</span> (8-10 April)
+                </h1>
+                <h2 data-aos="fade-up">International Conference on <br>
+
+                    Frontiers in Marine Sciences</h2>
+                <h4 data-aos="fade-up" data-aos-delay="100">Jointly Organised by<br></h4><h4>
+                    School of Marine Sciences<br>
+                    CUSAT-NCPOR Centre for Polar Sciences<br>
+                    Cochin University of Science and Technology (CUSAT)<br>
+                    & <br>
+                    National Centre for Polar and Ocean Research (NCPOR) <br>
+                    INSA-Scientific Committee on Antarctic Research (INSA-SCAR)</h4>
+                <h3 data-aos="fade-up" data-aos-delay="100" class="text-warning">ABSTRACT SUBMISSION DEADLINE: 20 MARCH 2024</h3>
+
+                <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
+
+                    <div class="col-lg-3 col-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span
+                                    class="days"></span>
+                            <p>Days</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span
+                                    class="hours"></span>
+                            <p>Hours</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span
+                                    class="minutes"></span>
+                            <p>Minutes</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                    <div class="col-lg-3 col-6">
+                        <div class="stats-item text-center w-100 h-100">
+                            <span
+                                    class="seconds"></span>
+                            <p>Seconds</p>
+                        </div>
+                    </div><!-- End Stats Item -->
+
+                </div>
+            </div>
+
+            {#            <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out">#}
+            {#                <div class="d-flex flex-column">#}
+            {#                    <img width="180px" class="img-fluid mb-3" src="{% static 'img/logos/CUSAT.png' %}" alt="">#}
+            {#                    <img  width="180px" class="img-fluid mb-3" src="{% static 'img/logos/marine.png' %}" alt="">#}
+            {#                    <img width="180px" class="img-fluid" src="{% static 'img/logos/MARICON.png' %}" alt="">#}
+            {#                </div>#}
+            {#            </div>#}
+            <div class="col-lg-4 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+                <div class="d-flex flex-column">
+                    <div class="d-none d-lg-flex flex-wrap justify-content-between">
+                        <a href="http://cusat.ac.in">
+                            <img width="140px" class="img-fluid mb-4" src="{% static 'img/logos/CUSAT.png' %}" alt="">
+                        </a>
+                        <a href="http://marine.cusat.ac.in">
+                            <img width="140px" class="img-fluid mb-4" src="{% static 'img/logos/marine.png' %}" alt="">
+                        </a>
+                        <a href="http://marine.cusat.ac.in/maricon/">
+                            <img width="140px" class="img-fluid mb-4" src="{% static 'img/logos/MARICON_PNG.png' %}" alt="">
+                        </a>
+                        <a href="#">
+                            <img width="140px" class="img-fluid mb-4" src="{% static 'img/logos/NCPOR_Logo.png' %}" alt="">
+                        </a>
+                        <a href="#">
+                            <img width="140px" class="img-fluid mb-4" src="{% static 'img/logos/DPI_CUSAT_NCPOR.png' %}" alt="">
+                        </a>
+                        <a href="#">
+                            <img width="140px" class="img-fluid mb-4" src="{% static 'img/logos/SCAR_logo.png' %}" alt="">
+                        </a>
+                    </div>
+                    <a href="{% static 'doc/Maricon_Poster_Template.pptx' %}" download="Maricon_Poster_Template.pptx" class="btn btn-primary" style="width: 13rem; margin-left: 6.5rem; margin-top: 4rem;">Download Poster Template</a>
+                    <a href="{% static 'doc/Technical_Session_Schedule.pdf' %}" download="Technical_Session_Schedule.pdf" class="btn btn-primary" style="width: 13rem; margin-left: 6.5rem; margin-top: 4rem;">Download Technical Sessions Schedule</a>
+                    <a href="{% static 'doc/MARICON_2024_Brochure.pdf' %}" download="MARICON_2024_Brochure.pdf" class="btn btn-primary" style="width: 13rem; margin-left: 6.5rem; margin-top: 4rem;">Download Brochure</a>
+                   
+                    <div class="d-lg-none d-flex flex-wrap justify-content-around">
+                        <a href="http://cusat.ac.in">
+                            <img width="117px" class="img-fluid mb-3" src="{% static 'img/logos/CUSAT.png' %}" alt="">
+                        </a>
+                        <a href="http://marine.cusat.ac.in">
+                            <img width="117px" class="img-fluid mb-3" src="{% static 'img/logos/marine.png' %}" alt="">
+                        </a>
+                        <a href="http://marine.cusat.ac.in/maricon/">
+                            <img width="117px" class="img-fluid mb-3" src="{% static 'img/logos/MARICON_PNG.png' %}" alt="">
+                        </a>
+                        <a href="#">
+                            <img width="117px" class="img-fluid mb-3" src="{% static 'img/logos/NCPOR_Logo.png' %}" alt="">
+                        </a>
+                        <a href="#">
+                            <img width="117px" class="img-fluid mb-3" src="{% static 'img/logos/DPI_CUSAT_NCPOR.png' %}" alt="">
+                        </a>
+                        <a href="#">
+                            <img width="117px" class="img-fluid mb-3" src="{% static 'img/logos/SCAR_logo.png' %}" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section><!-- End Hero Section -->
+
+<main id="main">
+
+
+    <!-- ======= About Us Section ======= -->
+    <section id="about" class="about pt-0">
+        <div class="container py-5" data-aos="fade-up">
+            <div class="section-header">
+                <span>About Us</span>
+                <h2>About Us</h2>
+
+            </div>
+            <div class="row gy-4">
+                <div class="col-lg-4 d-flex justify-content-center align-items-center order-lg-last order-first">
+                    <img class="img-fluid rounded-2" src={% static 'img/lake_side.jpg' %}  alt="">
+                </div>
+                <div class="col-lg-8 content order-last order-lg-first">
+
+                    <p style="text-align: justify">
+                        School of Marine Sciences of Cochin University of Science and Technology (CUSAT) is the only one
+                        of its kind in India encompassing all branches of Marine Sciences such as Marine Biology, Marine
+                        Geology and Geophysics, Physical Oceanography, Chemical Oceanography and Atmospheric Sciences
+                        under amm umberella. Over the years, School of Marine Sciences at CUSAT has played vital role in
+                        developing Marine Sciences in the country and has spawned many eminent personalities in that
+                        process, who are now adorning key positions in Marine Science Institutions in the country and
+                        abroad. School of Marine Sciences also play active role in implementing Marine Science related
+                        projects in the country with the help of funding from various central and state institutions.
+                        Recognizing the contributions of the school of marine sciences, CUSAT, Ministry of Earth
+                        Sciences (MoES, Govt. of India) has instituted an Ocean Sciences and Technology Cell (OSTC) at
+                        CUSAT which was later renamed as Earth Science and Technology Cell (ESTC). The school of Marine
+                        Sciences has now completed 80 years of glorious existence and to commemorate this occasion it
+                        has been decided to organize the first International Conference on Frontiers in Marine Sciences
+                        (MARICON’19) and MARICON’23 is the second one in the genesis of this seminar. The proposed
+                        International Seminar intends to provide a platform for leading scientists, teachers,
+                        researchers and students from Marine Sciences to discuss and exchange ideas in this frontier
+                        research area. The deliberations will keynote include, keynote addresses, invited lectures, oral
+                        and poster presentations.
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End About Us Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="frontier" class="services pt-0" style="background-color: #f6f7fd;">
+        <div id="service" class="container" data-aos="fade-up" style="margin-top: 60px;">
+
+            <div class="section-header">
+                <span>FRONTIER AREAS</span>
+                <h2>FRONTIER AREAS</h2>
+
+            </div>
+
+            <div class="row gy-4">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card p-4 text-center " style="background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #96EFFF, #5ad0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+                        <h3>Marine Geosciences</h3>
+                    </div>
+                </div><!-- End Card Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card p-4 text-center" style="background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #96EFFF, #5ad0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+                        <h3>Marine Biology</h3>
+                    </div>
+                </div><!-- End Card Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card p-4 text-center" style="background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #96EFFF, #5ad0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+                        <h3>Physical Oceanography</h3>
+                    </div>
+                </div><!-- End Card Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card p-4 text-center" style="background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #96EFFF, #5ad0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+                        <h3>Chemical Oceanography</h3>
+                    </div>
+                </div><!-- End Card Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card py-4 text-center" style="background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #96EFFF, #5ad0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+                        <h3>Atmospheric Science</h3>
+                    </div>
+                </div><!-- End Card Item -->
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card py-4 text-center" style="background: #2980B9;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #FFFFFF, #6DD5FA, #2980B9);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #FFFFFF, #96EFFF, #5ad0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+                        <h3>Polar Science</h3>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+
+    <!-- ======= Services Section ======= -->
+    <section id="themes" class="services pt-0">
+        <div id="service" class="container" data-aos="fade-up" style="margin-top: 60px;">
+
+            <div class="section-header">
+                <span>Focal Themes</span>
+                <h2>Focal Themes</h2>
+
+            </div>
+
+            <div class="row gy-4">
+                {% for theme in themes %}
+                    <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="50">
+                        <div class="card p-2 text-center " style="background: #96EFFF;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #ffffff, #96EFFF, #88edff);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #ffffff, #96EFFF, #5ad0ff); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+">
+
+                            <h3>{{ theme }}</h3>
+                        </div>
+                    </div><!-- End Card Item -->
+                {% endfor %}
+
+            </div>
+
+        </div>
+    </section><!-- End Services Section -->
+    <!-- ======= Call To Action Section ======= -->
+    <section id="registration" class="call-to-action"
+             style="background: linear-gradient(rgba(14, 29, 52, 0.6), rgba(14, 29, 52, 0.8)), url({% static 'img/isc-bg.jpg' %}) center center;">
+        <div id="call-to-action" class="container" data-aos="zoom-out">
+
+            <div class="row justify-content-center">
+                <div class="col-lg-8 text-center">
+                    <h3>Registration</h3>
+
+
+                    <p>
+                        Abstract should be submitted online
+                        <a href="/maricon/abstract/" target="_blank" class="bg-white text-black rounded-2 px-2">here</a>
+                        by 20 March, 2024. The author(s) should indicate his/her/their preference for oral or poster
+                        presentation.
+                        However, the technical committee shall decide the Final Scientific Program. Acceptance will be
+                        communicated
+                        to the potential speakers by 25 March, 2024.<br>
+                        <a href="{% static 'doc/Abstract_Template.docx' %}" class="bg-white text-black rounded-2 px-2"
+                           target="_blank"> Download Abstract Template here</a>
+                    </p>
+                    <a class="cta-btn" href="/maricon/abstract/">Register Now</a>
+
+                </div>
+            </div>
+
+
+        </div>
+    </section><!-- End Call To Action Section -->
+
+    <section id="fee" class="pricing pt-0">
+        <div class="container" data-aos="fade-up" style="margin-top: 60px;">
+
+            <div class="section-header">
+                <span>Registration Fee</span>
+                <h2>Registration Fee</h2>
+            </div>
+
+            <div class="row gy-4" style="display: flex !important;justify-content: center !important;">
+                <div class="col-lg-3 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-item">
+                        <h3 class="mb-2">International Delegates</h3>
+
+                        <hr class="my-3">
+
+                        <h5 class="pl-3 font-weight-bold  my-0">(Early Bird) </h5>
+
+                        <h4><sup>$</sup>300.00
+                        </h4>
+
+                        <hr class="my-3">
+                        <h5 class="pl-3 font-weight-bold  my-0">(Late Fee) </h5>
+
+                        <h4><sup>$</sup>350.00
+                        </h4>
+                    </div>
+                </div><!-- End Pricing Item -->
+                <div class="col-lg-3 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-item">
+                        <h3 class="mb-2">International
+                            Students</h3>
+
+                        <hr class="my-3">
+
+                        <h5 class="pl-3 font-weight-bold  my-0">(Early Bird) </h5>
+
+                        <h4><sup>$</sup>150.00
+                        </h4>
+
+                        <hr class="my-3">
+                        <h5 class="pl-3 font-weight-bold  my-0">(Late Fee) </h5>
+
+                        <h4><sup>$</sup>175.00
+                        </h4>
+                    </div>
+                </div><!-- End Pricing Item -->
+                <div class="col-lg-3 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-item">
+                        <h3 class="mb-2">National
+                            Delegates</h3>
+
+                        <hr class="my-3">
+
+                        <h5 class="pl-3 font-weight-bold  my-0">(Early Bird) </h5>
+
+                        <h4><sup>₹ </sup>3000
+                        </h4>
+
+                        <hr class="my-3">
+                        <h5 class="pl-3 font-weight-bold  my-0">(Late Fee) </h5>
+
+                        <h4><sup>₹</sup>3500
+                        </h4>
+                    </div>
+                </div><!-- End Pricing Item -->
+                <div class="col-lg-3 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-item">
+                        <h3 class="mb-2">Research
+                            Scholars</h3>
+
+                        <hr class="my-3">
+
+                        <h5 class="pl-3 font-weight-bold  my-0">(Early Bird) </h5>
+
+                        <h4><sup>₹</sup>1500
+                        </h4>
+
+                        <hr class="my-3">
+                        <h5 class="pl-3 font-weight-bold  my-0">(Late Fee) </h5>
+
+                        <h4><sup>₹</sup>1750
+                        </h4>
+                    </div>
+                </div><!-- End Pricing Item -->
+                <div class="col-lg-3 aos-init aos-animate" data-aos="fade-up" data-aos-delay="100">
+                    <div class="pricing-item">
+                        <h3 class="mb-2">Student
+                            Participants</h3>
+
+                        <hr class="my-3">
+
+                        <h5 class="pl-3 font-weight-bold  my-0">(Early Bird) </h5>
+
+                        <h4><sup>₹</sup>600
+                        </h4>
+
+                        <hr class="my-3">
+                        <h5 class="pl-3 font-weight-bold  my-0">(Late Fee) </h5>
+
+                        <h4><sup>₹</sup>750
+                        </h4>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section><!-- End Pricing Section -->
+
+    <section id="speakers" class="team pt-0" style="background-color: #f6f7fd;">
+        <div id="team" class="container" data-aos="fade-up" style="margin-top: 60px;">
+
+            <div class="section-header">
+                <span>speakers</span>
+                <h2>speakers</h2>
+
+            </div>
+            <div class="row" data-aos="fade-up" data-aos-delay="100">
+                {% for speaker in speakers %}
+                    <div class="col-lg-4 col-md-6 d-flex">
+                        <div class="member">
+                            <img src="{{ speaker.image.url }}" class="img-fluid" alt="">
+                            <div class="member-content">
+                                <h4>{{ speaker.name }}</h4>
+                                <span>{{ speaker.short_description }}</span>
+                                <p>
+                                    {{ speaker.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </section><!-- End Our Team Section -->
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="section-header" style="margin-top: -30px;">
+            <span>Contact Us</span>
+            <h2>Contact Us</h2>
+
+        </div>
+        <div class="container" data-aos="fade-up">
+
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.6294808438574!2d76.27993827454254!3d9.964752990138875!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0872b0258d1e95%3A0xf67fe64aae3a9bf!2sSchool%20of%20Marine%20Sciences%20CUSAT%20-%20Academic%20Block%201!5e0!3m2!1sen!2sin!4v1708605306666!5m2!1sen!2sin"
+                        style="border:0; width: 100%; height: 340px;" allowfullscreen loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+            <div class="container mt-3">
+                <div class="row">
+                    <div class="col-lg-3 my-1">
+                        <div class="info-item d-flex">
+                            <i class="bi bi-geo-alt flex-shrink-0"></i>
+                            <div>
+                                <h4>Location:</h4>
+                                <p>School of Marine Sciences
+                                    Lakeside Campus <br>
+                                    Cochin University of Sciences & Technology <br>
+                                    Kochi, Kerala, India 682016</p>
+                            </div>
+                        </div><!-- End Info Item -->
+                    </div>
+
+                    <div class="col-lg-3 my-1">
+                        <div class="info-item d-flex">
+                            <i class="bi bi-person flex-shrink-0"></i>
+                            <div>
+                                <h4>Prof. (Dr.) A. A. Mohamed Hatha</h4>
+                                <p>Organizing Chairman (CUSAT)</p>
+                                <p>Phone: +91 8882197762</p>
+                                <p>Email: mohamedhatha@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 my-1">
+                        <div class="info-item d-flex">
+                            <i class="bi bi-person flex-shrink-0"></i>
+                            <div>
+                                <h4>Prof. (Dr.) Sunil P. S.</h4>
+                                <p>Organizing Convenor (CUSAT)</p>
+                                <p>Phone: +91 9869801448</p>
+                                <p>Email: sunilps@cusat.ac.in</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 my-1">
+                        <div class="info-item d-flex">
+                            <i class="bi bi-person flex-shrink-0"></i>
+                            <div>
+                                <h4>Dr. Rahul Mohan</h4>
+                                <p>Co-Convenor (NCPOR)</p>
+                                <p>Phone: +91 9673531333</p>
+                                <p>Email: rahulmohan@ncpor.res.in</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+
+    <!-- ======= Pricing Section ======= -->
+    {% if faqs %}
+        <!-- ======= Frequently Asked Questions Section ======= -->
+        <section id="faq" class="faq">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-header">
+                    <span>Frequently Asked Questions</span>
+                    <h2>Frequently Asked Questions</h2>
+
+                </div>
+
+                <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="col-lg-10">
+
+                        <div class="accordion accordion-flush" id="faqlist">
+                            {% for faq in faqs %}
+
+                                <div class="accordion-item">
+                                    <h3 class="accordion-header">
+                                        <button class="accordion-button collapsed" type="button"
+                                                data-bs-toggle="collapse"
+                                                data-bs-target="#faq-content-{{ forloop.counter }}">
+                                            <i class="bi bi-question-circle question-icon"></i>
+                                            {{ faq.question }}
+                                        </button>
+                                    </h3>
+                                    <div id="faq-content-{{ forloop.counter }}" class="accordion-collapse collapse"
+                                         data-bs-parent="#faqlist">
+                                        <div class="accordion-body">
+                                            <p>{{ faq.answer }}</p>
+                                        </div>
+                                    </div>
+                                </div><!-- # Faq item-->
+                            {% endfor %}
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Frequently Asked Questions Section -->
+    {% endif %}
+</main><!-- End #main -->
+
+{% include "new_maricon/footer.html" with committees=committees %}
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src={% static "assets/vendor/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+<script src={% static "assets/vendor/purecounter/purecounter_vanilla.js" %}></script>
+<script src={% static "assets/vendor/glightbox/js/glightbox.min.js" %}></script>
+<script src={% static "assets/vendor/swiper/swiper-bundle.min.js" %}></script>
+<script src={% static "assets/vendor/aos/aos.js" %}></script>
+<script src={% static "assets/vendor/php-email-form/validate.js" %}></script>
+
+<!-- Template Main JS File -->
+<script src={% static "assets/js/main.js" %}></script>
+
+</body>
+
+</html>

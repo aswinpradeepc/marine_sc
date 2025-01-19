@@ -1,0 +1,120 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Maricon 2024</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href={% static "assets/vendor/bootstrap/css/bootstrap.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/bootstrap-icons/bootstrap-icons.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/fontawesome-free/css/all.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/glightbox/css/glightbox.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/swiper/swiper-bundle.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/aos/aos.css" %} rel="stylesheet">
+
+    <link href={% static 'assets/css/main.css' %} rel="stylesheet">
+    {% if err %}
+        <script>
+            window.onload = function () {
+                alert("{{ err }}");
+            }
+        </script>
+    {% endif %}
+
+
+</head>
+
+<body>
+
+{% include "new_maricon/header.html" %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="page-header d-flex align-items-center"
+             style="background-image: url({% static 'img/maricon_header.png' %})">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2>Fee Payment</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ol>
+                    <li><a href="/maricon/">Home</a></li>
+                    <li>Fee Payment</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <section id="hero " class="hero d-flex align-items-center" style="background-color: #f3f6fc">
+        <div class="container">
+            <div class="row gy-4 d-flex justify-content-center">
+                <div class="d-flex flex-column justify-content-center col-lg-8 ">
+                    {% if err %}
+                        <h5 class="text-danger">{{ err }}</h5>
+                    {% endif %}
+                    <form action="/payment/" accept-charset="UTF-8" method="post">
+                        {% csrf_token %}
+                        <h3 class="text-dark">Select your registration category</h3>
+                        <select name="category" class="form-control" required>
+                            <option value="" disabled selected>Select Category</option>
+                            <option value="id">International Delegates</option>
+                            <option value="is">International Students</option>
+                            <option value="nd">National Delegates</option>
+                            <option value="rs">Research Scholars</option>
+                            <option value="sp">Student Participants</option>
+                            <option value="in">Invalid option Dont select this option</option>
+                        </select>
+
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary ">Proceed to Pay</button>
+                        </div>
+                    </form>
+
+                </div>
+
+
+            </div>
+        </div>
+    </section><!-- End Hero Section -->
+
+</main><!-- End #main -->
+{% include "new_maricon/footer.html" %}
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src={% static "assets/vendor/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+<script src={% static "assets/vendor/purecounter/purecounter_vanilla.js" %}></script>
+<script src={% static "assets/vendor/glightbox/js/glightbox.min.js" %}></script>
+<script src={% static "assets/vendor/swiper/swiper-bundle.min.js" %}></script>
+<script src={% static "assets/vendor/aos/aos.js" %}></script>
+<script src={% static "assets/vendor/php-email-form/validate.js" %}></script>
+
+<!-- Template Main JS File -->
+<script src={% static "assets/js/main.js" %}></script>
+
+</body>
+
+</html>

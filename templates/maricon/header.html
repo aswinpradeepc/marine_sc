@@ -1,0 +1,29 @@
+<header id="header">
+    <div class="container">
+        <div id="logo" class="pull-left">
+            <h1><a href="#main">MARIC<span>o</span>n&nbsp;2<span>0</span>24</a></h1>
+        </div>
+        <nav id="nav-menu-container" class="topnav">
+            <div class="nav-menu">
+                <a href="/maricon/">Home</a>
+                <a href="/maricon/#background">Background</a>
+                <a href="/maricon/#speakers">Speakers</a>
+                <a href="/maricon/#schedule">Schedule</a>
+                <a href="/maricon/#venue">Venue</a>
+                <a href="/maricon/#sponsors">Sponsors</a>
+                <a href="/maricon/committee/">
+                    <div class="dropdown">
+                        <button class="dropbtn">Committee<i style="margin-left: 3px;" class="fa fa-angle-down"></i></button>
+                        <div class="dropdown-content">
+                            {% for committee in committees %}
+                                <a href="/maricon/committee/#{{ forloop.counter }}">{{ committee.name }}</a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </a>
+                <a href="/maricon/#contact">Contact</a>
+                </a>
+            </div>
+        </nav>
+    </div>
+</header>

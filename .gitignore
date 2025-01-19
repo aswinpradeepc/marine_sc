@@ -1,0 +1,29 @@
+venv
+**/migrations/0*
+**/pychache__*
+
+# Environments
+.env
+.idea
+.venv1
+
+db.sqlite3
+
+# Pytest
+.pytest_cache/
+coverage.xml
+htmlcov/
+.env.local
+staticfiles
+*.log
+
+.vscode
+
+node_modules
+.next
+admin/.next
+build/
+
+env/
+*.pyc
+media/abstracts/

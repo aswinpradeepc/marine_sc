@@ -1,0 +1,63 @@
+<footer id="footer">
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-6 footer-info">
+                    <h1><a href="#main">MARICON</a></h1>
+                    <p>The school of Marine Sciences has now completed 80 years of glorious existence and to commemorate
+                        this occasion it has been decided to organize the first International Conference on Frontiers in
+                        Marine Sciences (MARICON’19) and MARICON’23 is the second one in the genesis of this seminar.
+                    </p>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="fa fa-angle-right"></i> <a href="/maricon/">Home</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="/maricon/#background">Background</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="/maricon/#speakers">Speakers</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="/maricon/#schedule">Schedule</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="/maricon/#venue">Venue</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="/maricon/#sponsors">Sponsors</a></li>
+                        <li><i class="fa fa-angle-right"></i> <a href="/maricon/#contact">Contact</a></li>
+                        
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>Committees</h4>
+                    <ul>
+                        {% for committee in committees %}
+                            <li><i class="fa fa-angle-right"></i> <a
+                                    href="/maricon/committee/#{{ forloop.counter }}">{{ committee }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="col-lg-3 col-md-6 footer-contact">
+                    <h4>Contact Us</h4>
+                    <p>Director <br>
+                        School of Marine Sciences <br>
+                        Cochin University of Science and Technology<br>
+                        Lakeside Campus<br>
+                        Fine Arts Avenue -
+                        Cochin - 682 016
+                    </p>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong> School of Marine Sciences,CUSAT </strong>. All Rights Reserved
+        </div>
+        <div class="credits">
+            <a href="https://bootstrapmade.com/"></a>
+        </div>
+    </div>
+</footer>

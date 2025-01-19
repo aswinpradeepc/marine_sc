@@ -1,0 +1,121 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Maricon 2024</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href={% static "assets/vendor/bootstrap/css/bootstrap.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/bootstrap-icons/bootstrap-icons.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/fontawesome-free/css/all.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/glightbox/css/glightbox.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/swiper/swiper-bundle.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/aos/aos.css" %} rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/img/logos/favicon.ico">
+    <link href={% static 'assets/css/main.css' %} rel="stylesheet">
+
+</head>
+
+<body>
+
+{% include "new_maricon/header.html" %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="page-header d-flex align-items-center"
+             style="background-image: url({% static 'img/maricon_header.png' %})">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2>Privacy Policy</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ol>
+                    <li><a href="/maricon/">Home</a></li>
+                    <li>Privacy Policy</li>
+                </ol>
+            </div>
+        </nav>
+    </div><!-- End Breadcrumbs -->
+
+    <section id="hero " class="hero d-flex align-items-center container text-dark" style="background-color: #ffffff">
+        <div>
+            <p>This Privacy Policy outlines how information is collected, used, and protected on the MARICON 2024
+                website.</p>
+
+            <h4 class="text-dark">Information Collection</h4>
+            <p>We may collect personal information, including but not limited to names, email addresses, and
+                affiliations, during the registration and abstract submission processes for MARICON 2024. This
+                information is used solely for conference-related purposes.</p>
+
+            <h4 class="text-dark">Information Usage</h4>
+            <p>Collected information may be used for the following purposes:</p>
+            <ul>
+                <li>Conference registration and communication</li>
+                <li>Abstract submission and review</li>
+                <li>Conference-related announcements and updates</li>
+            </ul>
+
+            <h4 class="text-dark">Information Protection</h4>
+            <p>We are committed to ensuring the security and confidentiality of collected information. Access to
+                personal data is restricted to authorized personnel only, and appropriate measures are in place to
+                prevent unauthorized access or disclosure.</p>
+
+            <h4 class="text-dark">Third-Party Links</h4>
+            <p>The MARICON 2024 website may contain links to third-party websites. We are not responsible for the
+                privacy practices or content of these external sites. Users are encouraged to review the privacy
+                policies of linked websites.</p>
+
+            <h4 class="text-dark">Changes to Privacy Policy</h4>
+            <p>We reserve the right to update or modify this Privacy Policy at any time. Changes will be reflected on
+                this page. Users are advised to review the Privacy Policy periodically for updates.</p>
+
+            <h4 class="text-dark">Contact Information</h4>
+            <p>If you have any questions or concerns regarding this Privacy Policy, please contact us at mariconcusat@gmail.com</p>
+
+            <p>This Privacy Policy is effective as of 20/02/2024.</p>
+        </div>
+
+
+    </section><!-- End Hero Section -->
+
+</main><!-- End #main -->
+{% include "new_maricon/footer.html" %}
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src={% static "assets/vendor/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+<script src={% static "assets/vendor/purecounter/purecounter_vanilla.js" %}></script>
+<script src={% static "assets/vendor/glightbox/js/glightbox.min.js" %}></script>
+<script src={% static "assets/vendor/swiper/swiper-bundle.min.js" %}></script>
+<script src={% static "assets/vendor/aos/aos.js" %}></script>
+<script src={% static "assets/vendor/php-email-form/validate.js" %}></script>
+
+<!-- Template Main JS File -->
+<script src={% static "assets/js/main.js" %}></script>
+
+</body>
+
+</html>

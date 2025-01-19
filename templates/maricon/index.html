@@ -1,0 +1,672 @@
+{% extends "maricon/base.html" %}
+{% block header %}
+{% include "maricon/header.html" with committees=committees %}
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+        .sec-1 {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        .sec-1 .allbox-container {
+
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            column-gap: .5rem;
+            row-gap: 3rem;
+            place-items: center;
+        }
+
+        .sec-1 .box-container {
+            display: grid;
+            row-gap: .5rem;
+        }
+
+        .sec-1 .box {
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100px;
+            background-color: var(--box-bg-color);
+            font-weight: 800;
+            padding: 1rem;
+            font-size: 1.1rem;
+
+        }
+
+        .sec-1 .box .main {
+            text-align: center;
+        }
+
+        .sec-1 .box .sub {
+            font-weight: 500;
+        }
+
+        .sec-2 .allbox-container {
+
+            display: grid;
+            grid-template-rows: 1fr;
+            row-gap: 2rem;
+
+        }
+
+        .sec-2 .box-container {
+
+            display: grid;
+            grid-template-rows: 1fr;
+            row-gap: .5rem;
+        }
+
+        .sec-2 .box {
+
+            background: var(--box-bg-gradient-color);
+            display: flex;
+            align-items: center;
+            padding: 2rem 1rem;
+        }
+
+        .sec-2 .box.value,
+        .sec-2 .box.acc-name {
+            font-weight: 700;
+        }
+
+
+        @media (min-width: 768px) {
+
+          
+
+
+            .sec-1 .allbox-container {
+
+                grid-template-columns: repeat(3, 1fr);
+                row-gap: 1rem;
+
+            }
+
+            .sec-1 .allbox-container .box-container:last-child {
+                grid-column: span 3;
+                width: 100%;
+            }
+
+            .sec-1 .box-container:last-child .box {
+                width: 100%;
+            }
+
+            .sec-2 .allbox-container {
+
+                display: grid;
+                grid-template-rows: 1fr;
+                row-gap: .5rem;
+
+            }
+
+            .sec-2 .box-container {
+
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: .5rem;
+            }
+
+            .sec-2 .box {
+                padding: 1.5rem;
+            }
+
+        }
+
+        @media (min-width: 1024px) {
+            
+            .sec-1 .box,
+            .sec-2 .box {
+                font-size: 1.3rem;
+            }
+
+            h1 {
+                text-align: start;
+                font-size: 2.5rem;
+            }
+
+            .sec-1 {
+
+                display: block;
+
+            }
+
+            .sec-1 .allbox-container {
+
+                grid-template-columns: repeat(4, 1fr);
+                column-gap: .5rem;
+
+            }
+
+            .sec-1 .allbox-container .box-container:last-child {
+                grid-column: auto;
+            }
+
+            .sec-2 .allbox-container {
+
+                display: grid;
+                grid-template-rows: 1fr;
+                row-gap: .5rem;
+
+            }
+
+            .sec-2 .box-container {
+
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: .5rem;
+            }
+
+            .sec-2 .box {
+                padding: 1.5rem;
+            }
+
+        }
+
+        @media (min-width: 1280px) {
+
+
+            .sec-1 .box,
+            .sec-2 .box {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+{% endblock %}
+{% block contents %}
+
+    <section id="about" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>Background</h2>
+                    <p class="mt-3">
+                        School of Marine Sciences of Cochin University of Science and
+                        Technology (CUSAT) is the only one of its kind in India
+                        encompassing all branches of Marine Sciences such as Marine
+                        Biology, Marine Geology and Geophysics, Physical
+                        Oceanography, Chemical Oceanography and Atmospheric
+                        Sciences under the same umbrella. Over the years, School of
+                        Marine Sciences at CUSAT has played vital role in developing
+                        Marine Sciences in the country and has spawned many
+                        eminent personalities in that process, who are now adorning
+                        key positions in Marine Science Institutions in the country and
+                        abroad. School of Marine Sciences also play active role in
+                        implementing Marine Science related projects in the country
+                        with the help of funding from various central and state
+                        institutions. Recognizing the contributions of the School of
+                        Marine Sciences, CUSAT, Ministry of Earth Sciences (MoES, Govt.
+                        of India) has instituted an Ocean Sciences and Technology
+                        Cell (OSTC) at CUSAT which was later renamed as Earth
+                        Science and Technology Cell (ESTC). The School of Marine
+                        Sciences has now completed 83 years of glorious existence. To
+                        commemorate 80th Anniversary of School of Marine Sciences
+                        we have organised the first International Conference on
+                        Frontiers in Marine Sciences (MARICON’19) which was a roaring
+                        success. MARICON’24 is the second one in this seminar series,
+                        which intends to provide a platform for leading scientists,
+                        teachers, researchers and students from Marine Sciences to
+                        discuss and exchange ideas in this frontier research area. The
+                        deliberations will include keynote addresses, invited lectures,
+                        oral and poster presentations
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--==========================
+      Speakers Section
+    ============================-->
+    {% if speakers %}
+    <section id="speakers" class="wow fadeInUp">
+        <div class="container">
+            <div class="section-header">
+                <h2>Event Speakers</h2>
+                <p>Here are some of our speakers</p>
+            </div>
+            <div class="row">
+                {% for speaker in speakers %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="speaker">
+                            <img src="{{ speaker.image.url }}" alt="{{ speaker.name }}" class="img-fluid">
+                            <div class="details">
+                                <h3>{{ speaker.name }}</h3>
+                                <p>{{ speaker.description }}</p>
+                                <div class="social">
+                                    {% if speaker.twitter_link %}
+                                        <a href="{{ speaker.twitter_link }}"><i class="fa fa-twitter"></i></a>
+                                    {% endif %}
+                                    {% if speaker.facebook_link %}
+                                        <a href="{{ speaker.facebook_link }}"><i class="fa fa-facebook"></i></a>
+                                    {% endif %}
+                                    {% if speaker.google_plus_link %}
+                                        <a href="{{ speaker.google_plus_link }}"><i class="fa fa-google-plus"></i></a>
+                                    {% endif %}
+                                    {% if speaker.linkedin_link %}
+                                        <a href="{{ speaker.linkedin_link }}"><i class="fa fa-linkedin"></i></a>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+
+    </section>
+    {% endif %}
+    {% if schedule %}
+    <section id="schedule" class="section-with-bg">
+        <div id="notice" class="container wow fadeInUp">
+            <div class="section-header">
+                <h2>Event Schedule</h2>
+                <p>Here is our event schedule</p>
+            </div>
+
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#day-1" role="tab" data-toggle="tab">Day 1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#day-2" role="tab" data-toggle="tab">Day 2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#day-3" role="tab" data-toggle="tab">Day 3</a>
+                </li>
+            </ul>
+
+            <div class="tab-content row justify-content-center">
+                {% for sh in schedule %}
+                    <div role="tabpanel" class="col-lg-9 tab-pane fade show active" id="day-{{ forloop.counter }}">
+                        {% for s in sh.schedule %}
+                            <div class="row schedule-item">
+                                <div class="col-md-2">
+                                    <time>{{ s.time }}</time>
+                                </div>
+                                <div class="col-md-10">
+                                    <h4>{{ s.title }}</h4>
+                                    <p>{{ s.description }}</p>
+                                </div>
+                            </div>
+                        {% endfor %}
+
+                    </div>
+
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </section>
+    {% endif %}
+    <!-- sections  1 -->
+
+    <section class="sec-1">
+
+        <!-- section heading  -->
+        <div class="section-header">
+            <h2>REGISTRATION FEE</h2>
+        </div>
+        <!-- box-container  -->
+
+        <div class="allbox-container">
+
+            <!-- column 1  -->
+
+            <div class="box-container">
+
+                <div class="box">
+
+                    <p class="main">International Delegates</p>
+
+                </div>
+                <div class="box">
+
+                    <p class="main">USD 300.00</p>
+
+                    <p class="sub">(Early Bird)</p>
+
+                </div>
+                <div class="box">
+
+                    <p class="main">USD 350.00</p>
+
+                    <p class="sub">(Late Fee)</p>
+
+                </div>
+
+            </div>
+
+            <!-- column 2  -->
+
+            <div class="box-container">
+
+                <div class="box">
+
+                    <p class="main">National Delegates</p>
+
+                </div>
+                <div class="box">
+
+                    <p class="main">USD 3000.00</p>
+
+                    <p class="sub">(Early Bird)</p>
+
+                </div>
+                <div class="box">
+
+                    <p class="main">USD 3500.00</p>
+
+                    <p class="sub">(Late Fee)</p>
+
+                </div>
+
+            </div>
+
+            <!-- column 3  -->
+
+            <div class="box-container">
+
+                <div class="box">
+
+                    <p class="main">Research Scholars</p>
+
+                </div>
+                <div class="box">
+
+                    <p class="main">USD 1500.00</p>
+
+                    <p class="sub">(Early Bird)</p>
+
+                </div>
+                <div class="box">
+
+                    <p class="main">USD 1750.00</p>
+
+                    <p class="sub">(Late Fee)</p>
+
+                </div>
+
+            </div>
+
+            <!-- column 4  -->
+
+            <div class="box-container">
+
+                <div class="box">
+
+                    <p class="main">Student Participants</p>
+
+                </div>
+                <div class="box">
+
+                    <p class="main">USD 600.00</p>
+
+                    <p class="sub">(Early Bird)</p>
+
+                </div>
+                <div class="box">
+
+                    <p class="main">USD 750.00</p>
+
+                    <p class="sub">(Late Fee)</p>
+
+                </div>
+
+            </div>
+
+        </div>
+        <div class="allbox-container">
+
+            <!-- account name  -->
+
+            <div class="box-container">
+
+                <div class="box acc-name">Account name</div>
+
+                <div class="box value">CONVENOR, MARICON-2024</div>
+
+            </div>
+
+            <!-- account number  -->
+
+            <div class="box-container">
+
+                <div class="box">Account No</div>
+
+                <div class="box value">4273002104004115</div>
+
+            </div>
+
+            <!-- bank name  -->
+
+            <div class="box-container">
+
+                <div class="box">Bank name</div>
+
+                <div class="box value">PUNJAB NATIONAL BANK <br> DH ROAD, Ernakulam</div>
+
+            </div>
+
+            <!-- IFSC Code  -->
+
+            <div class="box-container">
+
+                <div class="box">IFSC Code</div>
+
+                <div class="box value">PUNB0427300</div>
+
+            </div>
+
+        </div>
+    </section>
+
+
+
+    <!--==========================
+         Gallery Section
+       ============================-->
+    {% if gallery %}
+    <section id="gallery" class="wow fadeInUp">
+
+        <div class="container">
+            <div class="section-header">
+                <h2>Gallery</h2>
+                <p>Check our gallery from the recent events</p>
+            </div>
+        </div>
+
+        <div class="owl-carousel gallery-carousel">
+            {% for image in gallery %}
+                <a href="{{ image.image.url }}" class="venobox" data-gall="gallery-carousel"><img
+                        src="{{ image.image.url }}"
+                                                                                          alt=""></a>
+            {% endfor %}
+            
+        </div>
+
+    </section>
+    {% endif %}
+    <!--==========================
+      Venue Section
+    ============================-->
+    <section id="venue" class="wow fadeInUp">
+
+        <div class="container-fluid">
+
+            <div class="section-header">
+                <h2>Event Venue</h2>
+                <p>Event venue location info and gallery</p>
+            </div>
+
+            <div class="row no-gutters">
+                <div class="col-lg-6 venue-map">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.6331078041835!2d76.28015772596054!3d9.964451990139102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0873c203d8d759%3A0x1ca7c19f32c2ef71!2sLakeside%20campus%2C%20Cochin%20University%20of%20Science%20and%20Technology!5e0!3m2!1sen!2sin!4v1705416711643!5m2!1sen!2sin"
+                            width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                            referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+                <div class="col-lg-6 venue-info">
+                    <div class="row justify-content-center">
+                        <div class="col-11 col-lg-8">
+                            <h3>School of Marine Sciences</h3>
+                            <p>
+
+                                Cochin University of Science and Technology<br>
+                                Lakeside Campus<br>
+                                Fine Arts Avenue -
+                                Cochin - 682 016
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!--==========================
+      Sponsors Section
+    ============================-->
+    {% if sponsors %}
+    <section id="sponsors" class="section-with-bg wow fadeInUp">
+
+        <div class="container">
+            <div class="section-header">
+                <h2>Sponsors</h2>
+            </div>
+
+            <div class="row no-gutters sponsors-wrap clearfix ">
+                {% for sponsor in sponsors %}
+                <div class="col-lg-3 col-md-4 col-xs-6">
+                    <div class="sponsor-logo">
+                        <img src="{{ sponsor.image.url }}" class="img-fluid" alt="">
+                    </div>
+                    <div class="text-center">
+                        <strong>
+                            {{ sponsor.name }}
+                        </strong>
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+
+        </div>
+
+    </section>
+    {% endif %}
+    <!--==========================
+      F.A.Q Section
+    ============================-->
+    {% if faqs %}
+    <section id="faq" class="wow fadeInUp">
+
+        <div class="container">
+
+            <div class="section-header">
+                <h2>F.A.Q </h2>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <ul id="faq-list">
+                        {% for faq in faqs %}
+                        <li>
+                            <a data-toggle="collapse" class="collapsed"
+                               href="#faq{{ forloop.counter }}">{{ faq.question }} <i
+                                    class="fa fa-minus-circle"></i></a>
+                            <div id="faq{{ forloop.counter }}" class="collapse" data-parent="#faq-list">
+                                <p>
+                                    {{ faq.answer }}
+                                </p>
+                            </div>
+                        </li>
+                        {% endfor %}
+              
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+    {% endif %}
+    <!-- #contact -->
+    <section id="contact" class="section-bg wow fadeInUp">
+
+        <div class="container">
+            <div class="container">
+
+                <div class="section-header">
+                    <h2>Contact Us</h2>
+                </div>
+
+                <div class="row contact-info">
+
+                    <div class="col-md-4">
+                        <div class="contact-address">
+                            <i class="ion-ios-location-outline"></i>
+                            <h3>Address</h3>
+                            <address>Director <br>
+                                School of Marine Sciences <br>
+                                Cochin University of Science and Technology<br>
+                                Lakeside Campus<br>
+                                Fine Arts Avenue -
+                                Cochin - 682 016
+                            </address>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 ">
+                        <div class="contact-phone">
+
+                            <i class="ion-ios-telephone-outline"></i>
+                            <h3>Prof. A. A. Mohamed Hatha</h3>
+                            <p>
+                                <strong><p>Organising Chairman & Director
+                                    MARICON-2024 </p></strong> <br>
+                                School of Marine Sciences
+                                Lakeside Campus, CUSAT<br>
+                                Email : <a href="mailto:mohamedhatha@gmail.com>">mohamedhatha@gmail.com</a> <br>
+                                Phone : <a href="tel:+919446866050">+91 94468 66050</a>
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="contact-email">
+                            <i class="ion-ios-email-outline"></i>
+                            <h3>Prof. P. S. Sunil</h3>
+                            <p>
+
+                                <strong>Organising Convener
+                                    MARICON-2024</strong> <br>
+                                School of Marine Sciences
+                                Lakeside Campus, CUSAT <br>
+                                Email: <a href="mailto:sunilpsgmail.com"> sunilpsgmail.com</a><br>
+                                Phone <a href="tel:+919446866050">+91 94468 66050</a>
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <div>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.6331078041835!2d76.28015772596054!3d9.964451990139102!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0873c203d8d759%3A0x1ca7c19f32c2ef71!2sLakeside%20campus%2C%20Cochin%20University%20of%20Science%20and%20Technology!5e0!3m2!1sen!2sin!4v1705416711643!5m2!1sen!2sin"
+                        width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+
+        </div>
+    </section>
+    {% include "maricon/footer.html" with committees=committees %}
+{% endblock %}

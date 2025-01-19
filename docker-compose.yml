@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  web:
+    command: ["bash", "scripts/run.sh"]
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/code
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - nginx_network
+
+  db:
+    image: postgres:latest
+    env_file:
+      - .env
+    volumes:
+      - ps_data:/var/lib/postgresql/data
+      - ./db_init:/docker-entrypoint-initdb.d
+    networks:
+      - nginx_network
+    healthcheck:
+      test: [ "CMD-SHELL", "sh -c 'pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DB}'" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  redis:
+    image: redis:latest
+    networks:
+      - nginx_network
+
+#  pgadmin:
+#    image: dpage/pgadmin4
+#    env_file:
+#      - .env
+#    volumes:
+#      - pgadmin_data:/var/lib/pgadmin
+#    networks:
+#      - nginx_network
+
+  nginx:
+    image: nginx:latest
+    ports:
+      - "8000:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./staticfiles:/code/staticfiles
+      - ./media:/code/media
+    depends_on:
+      - web
+    networks:
+      - nginx_network
+
+#  metabase:
+#    image: metabase/metabase
+#    volumes:
+#      - metabase_data:/metabase-data
+#    env_file:
+#      - .env
+#    ports:
+#      - "3002:3000"
+#    networks:
+#      - nginx_network
+#    depends_on:
+#      db:
+#        condition: service_healthy
+#    restart: unless-stopped
+
+volumes:
+  ps_data:
+  pgadmin_data:
+  metabase_data:
+
+networks:
+  nginx_network:

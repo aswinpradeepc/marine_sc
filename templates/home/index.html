@@ -1,0 +1,848 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ICMBGSD-2025</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="{% static '\js\script.js' %}" defer></script>
+</head>
+<body>
+    <div id="top"></div> 
+
+
+
+    <nav>
+        <div class="logo-container">
+            <img src="{% static '\img\logos\logo.png'%}" alt="Icon" class="logo" />
+            <span><b>ICMBGSD</b></span>
+        </div>
+        <div class="mobile-menu-btn">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#speakers">Speakers</a>
+            <a href="#themes">Themes</a>
+            <a href="#guidelines">Guidelines</a>
+            <a href="#dates">Important Dates</a>
+            <a href="#registration">Registration</a>
+            <a href="#committee">Committee</a>
+            <a href="#accommodation">Accommodation</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    
+
+
+
+    <section id="hero" class="hero-section">
+        <div class="hero-content">
+            <h1>ICMBGSD 25</h1>
+            <h2>International Conference on Marine Biodiversity, Genomics and Sustainable Development</h2>
+            
+            <div class="logos-container">
+                <img src="{% static '\img\logos\logo-1.png' %}" alt="Logo 1" class="agency-logo">
+                <img src="{% static '\img\logos\logo-2.png' %}" alt="Logo 2" class="agency-logo exact-shape-logo">
+                <img src="{% static '\img\logos\logo-3.png' %}" alt="Logo 3" class="agency-logo">
+            </div>
+            <br><br>
+            
+            <div class="event-details">
+                <p><b>April 9-11, 2025</b></p>
+                <p><b>School of Marine Sciences, CUSAT</b></p>
+            </div>
+            <br><br>
+            <div id="countdown" class="countdown">
+                <div>
+                    <h3 id="days">00</h3>
+                    <p>Days</p>
+                </div>
+                <div>
+                    <h3 id="hours">00</h3>
+                    <p>Hours</p>
+                </div>
+                <div>
+                    <h3 id="minutes">00</h3>
+                    <p>Minutes</p>
+                </div>
+                <div>
+                    <h3 id="seconds">00</h3>
+                    <p>Seconds</p>
+                </div>
+            </div>
+<br>
+       
+            <div class="container">
+              <label class="label">
+                <input type="checkbox" class="input" />
+                <span class="circle"
+                  ><svg
+                    class="icon"
+                    aria-hidden="true"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="1.5"
+                      d="M12 19V5m0 14-4-4m4 4 4-4"
+                    ></path>
+                  </svg>
+                  <div class="square"></div>
+                </span>
+                <p class="title">Download Brochure</p>
+                <p class="title">Open</p>
+              </label>
+            </div>
+            
+
+            <br><br>
+            <div class="department-name">
+                <h3>Dept. of Marine Biology, Microbiology and Biochemistry</h3>
+                <h4>Cochin University of Science and Technology</h4>
+                <div class="association-info">
+                    <p>In association with:</p>
+                    <p>National Center for Polar and Ocean Research, Goa &</p>
+                    <p>CUSAT-NCPOR Center for Polar Sciences</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+
+
+
+
+    <section id="about" class="about-section">
+        <div class="section-header fade-in">
+            <h2>About</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="about-content">
+            <div class="about-card slide-in-left">
+                <div class="card-icon">
+                    <i class="fas fa-water"></i>
+                </div>
+                <h3>Background</h3>
+                <p>Oceans covering 2/3 of planet earth, which is teeming with various kinds of living organisms ranging from microscopic prokaryotes to the mammoth blue whales. Each of them has a definite role in the huge marine ecosystem and supports humanity with great amounts of food and other products and services.</p>
+                <p>However, the perturbations in the marine environment due to ocean acidification and increase in sea surface temperatures, ever increasing quantities of marine litter and the coastal pollution has started affecting the biological communities in a significant manner which will affect the very existence of humans on planet earth...</p>
+            </div>
+            <div class="about-card slide-in-right">
+                <div class="card-icon">
+                    <i class="fas fa-university"></i>
+                </div>
+                <h3>Department</h3>
+                <p>DMMB is an integral part of the School of Marine Sciences CUSAT, which is one of its kinds School in the country with all branches of marine sciences under the same umbrella.</p>
+                <p>Being a highly research intensive department, DMMB is recognized under DST-FIST, UGC-SAP, KSCSTE-SARD and RUSA...</p>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section id="speakers" class="speakers-section">
+        <div class="section-header fade-in">
+            <h2>Keynote Speakers</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="speakers-grid">
+            <!-- Row 1: 4 People -->
+            <div class="speaker-card">
+                <div class="card-image">
+                    <img src="{% static '\img\speakers\1.jpg' %}" alt="Speaker 1">
+                </div>
+                <div class="card-content">
+                    <h3>Dr. Biju Kumar</h3>
+                    <p class="speaker-title">Professor in the Department of Aquatic Biology & Fisheries</p>
+                    <p class="speaker-org">University of Kerala</p>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <div class="card-image">
+                    <img src="{% static '\img\speakers\2.jpg' %}" alt="Speaker 2">
+                </div>
+                <div class="card-content">
+                    <h3>Dr. Bineesh. K. K</h3>
+                    <p class="speaker-title">Scientist-E</p>
+                    <p class="speaker-org">Zoological Survey of India</p>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <div class="card-image">
+                    <img src="{% static '\img\speakers\3.jpg' %}" alt="Speaker 3">
+                </div>
+                <div class="card-content">
+                    <h3>Dr. Rajesh Ramacchandran</h3>
+                    <p class="speaker-title">Associate Professor</p>
+                    <p class="speaker-org">IISER MOHALI</p>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <div class="card-image">
+                    <img src="{% static '\img\speakers\4.jpg' %}" alt="Speaker 4">
+                </div>
+                <div class="card-content">
+                    <h3>Dr. Anas Abdulaziz</h3>
+                    <p class="speaker-title">Senior Principal Scientist </p>
+                    <p class="speaker-org">CSIR-National Institute of Oceanography, ( Regional centre, Kochi )</p>
+                </div>
+            </div>
+            <!-- Row 2: 3 People -->
+            <div class="speaker-card">
+                <div class="card-image">
+                    <img src="{% static '\img\speakers\5.jpg' %}" alt="Speaker 5">
+                </div>
+                <div class="card-content">
+                    <h3>Dr. Ratheesh Kumar R</h3>
+                    <p class="speaker-title">Scientist</p>
+                    <p class="speaker-org">ICAR-CMFRI. </p>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <div class="card-image">
+                    <img src="{% static '\img\speakers\6.jpg' %}" alt="Speaker 6">
+                </div>
+                <div class="card-content">
+                    <h3>Dr. E.P. Nobi</h3>
+                    <p class="speaker-title">Ministry of Earth Science</p>
+                    <p class="speaker-org">GoI</p>
+                </div>
+            </div>
+            <div class="speaker-card">
+                <div class="card-image">
+                    <img src="{% static '\img\speakers\7.jpg' %}" alt="Speaker 7">
+                </div>
+                <div class="card-content">
+                    <h3>Dr. Benjamin Naman C</h3>
+                    <p class="speaker-title"></p>
+                    <p class="speaker-org">USA</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+
+<br><br>
+    <section id="themes" class="themes-section">
+        <br>
+        <div class="section-header fade-in">
+            <h2>Focal Themes</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="themes-grid">
+            <div class="theme-card" >
+                <div class="theme-content">
+                    <h3 class="theme-title">Marine Biodiversity and Conservation</h3>
+                    
+                    <img src="{% static '\img\theme\1.jpg' %}" alt="Description of the image" class="theme-image">
+
+                    <p class="theme-description">Marine biodiversity, spanning from microscopic plankton to whales, is vital for ecosystem health,
+                         providing oxygen, climate regulation, and sustenance for millions. However, it faces mounting threats from overfishing,
+                          pollution, habitat destruction, and climate change. Research in marine biodiversity and conservation is essential to
+                           understanding these challenges, protecting ocean ecosystems, and ensuring their sustainability. Safeguarding marine 
+                           life supports both environmental resilience and humanity's future well-being.<br>
+                        •	Exploration and cataloguing of marine biodiversity<br>
+                        •	Conservation strategies for endangered marine species and ecosystems<br>
+                        •	Marine protected areas and biodiversity hotspots<br>
+                        •	Marine Pollution and its mitigation.
+                        </p>
+                </div>
+            </div>
+            <div class="theme-card" >
+                <div class="theme-content">
+                    <h3 class="theme-title">Sustainable Fisheries, Aquaculture and Blue Economy</h3>
+                    <img src="{% static '\img\theme\2.jpg' %}" alt="Description of the image" class="theme-image">
+                    <p class="theme-description">Sustainable fisheries, aquaculture, and the blue economy are key to
+                         balancing ecological preservation with economic growth. Aquaculture meets rising seafood demand
+                          but must avoid resource overuse and pollution. The blue economy integrates sectors like renewable 
+                          energy, marine biotechnology, and eco-tourism to promote sustainable marine resource use. Together,
+                           these approaches support resilient ocean ecosystems and the prosperity of coastal communities through
+                            innovation, research, and policy.<br>
+                        •	Marine biotechnology in fish farming and aquaculture health management<br>
+                        •	Fisheries-Sustainable development, management and resource conservation<br>
+                        •	Impact of climate change on fisheries and aquaculture<br>
+                        •	Marine spatial planning and integrated coastal management<br>
+                        •	Policy frameworks for sustainable use of marine resources<br>
+                        </p>
+                </div>
+            </div>
+            <div class="theme-card" >
+                <div class="theme-content">
+                    <h3 class="theme-title">Marine Biotechnology and Genomics</h3>
+                    <img src="{% static '\img\theme\3.jpg' %}" alt="Description of the image" class="theme-image">
+                    <p class="theme-description">Marine biotechnology and genomics leverage the unique biological resources
+                         of marine organisms to drive innovation in pharmaceuticals, agriculture, energy, and environmental
+                          management. These fields enhance understanding of biodiversity, evolution, and ecosystem dynamics, 
+                          aiding conservation and sustainable resource management. Advances in marine biotechnology, genomics, 
+                          and high-throughput screening are accelerating the development of therapeutics.<br>
+                        •	Biotechnological innovations for sustainable aquaculture<br>
+                        •	Genomic insights into marine organisms and ecosystems<br>
+                        •	Application of omics technologies (genomics, proteomics, metabolomics) in marine research<br>
+                        •	Marine microbiomes and their role in ecosystem functioning<br>
+                        •	Marine enzymes and biomaterials for industrial applications<br>
+                        •	Marine bio-resources for renewable energy production (e.g., biofuels, algae-based energy solutions)<br>
+                        </p>
+                </div>
+            </div>
+            <div class="theme-card" >
+                <div class="theme-content">
+                    <h3 class="theme-title">Marine Natural Products and Drug Discovery</h3>
+                    <img src="{% static '\img\theme\4.jpg' %}" alt="Description of the image" class="theme-image">
+                    <p class="theme-description">The ocean’s biodiversity holds immense potential for drug discovery, offering
+                         bioactive compounds like antibiotics, enzymes, and anti-cancer agents. Marine organisms, adapted to 
+                         extreme environments, produce chemically diverse molecules not found in terrestrial sources, making 
+                         them a rich resource for new drug candidates. Exploring marine natural products is crucial for advancing
+                          medical science and addressing global healthcare challenges. By integrating drug discovery techniques to 
+                          marine natural products, we unlock new strategies for environmental sustainability, improved health outcomes,
+                           and economic growth. Discovery of novel bioactive compounds from marine organisms<br>
+                        •	Marine microbes, algae, and invertebrates as sources for pharmaceuticals and nutraceuticals<br>
+                        •	Exploration of marine organisms for drug development<br>
+                        •	Marine-derived anti-cancer, anti-inflammatory, and anti-microbial agents<br>
+                        •	Development of marine bioactive compounds for human and animal health<br>
+                        </p>
+                </div>
+            </div>
+            <div class="theme-card" >
+                <div class="theme-content">
+                    <h3 class="theme-title">Polar Biology, Climate Change and Ocean Health</h3>
+                    <img src="{% static '\img\theme\5.jpg' %}" alt="Description of the image" class="theme-image">
+                    <p class="theme-description">Polar biology, ecology, and ocean health are deeply interconnected,
+                         with polar ecosystems highly sensitive to climate change. Rising temperatures drive ice melt,
+                          ocean acidification, and species shifts, threatening biodiversity and impacting global ocean health, 
+                          fisheries, sea levels, and climate systems. As indicators of planetary health, polar regions are essential 
+                          for understanding and mitigating climate change. Research in these areas guides policies to protect fragile
+                           ecosystems and ensure environmental resilience.<br>
+                        •	Microbial Diversity and Community Structure<br>
+                        •	Microbial Interactions and Biogeochemical Cycles<br>
+                        •	Impact of climate change on marine ecosystems and resources<br>
+                        
+                        •	Adaptive strategies for marine conservation in the context of climate change<br>
+                        •	Marine Pollution and Bioremediation: Impact and solutions using Bio-Resources.<br>
+                        </p>
+                </div>
+            </div>
+            <div class="theme-card" >
+                <div class="theme-content">
+                    <h3 class="theme-title">Marine Microbiology and Anti-Microbial Resistance</h3>
+                    <img src="{% static '\img\theme\6.jpg' %}" alt="Description of the image" class="theme-image">
+                    <p class="theme-description">Marine microbiology and antimicrobial resistance (AMR) 
+                        are critical research areas bridging health, ecology, and biotechnology. Marine microorganisms,
+                         including bacteria and fungi, drive essential processes like nutrient cycling and ecosystem health. 
+                         However, oceans also act as reservoirs and pathways for antibiotic-resistant genes, amplified by human 
+                         activities. Understanding marine microbial ecosystems and their role in AMR is vital for addressing this
+                          global health threat while safeguarding marine environments and public health. <br>
+                        •	Surveillance and Monitoring of AMR in Marine Systems<br>
+                        •	Strategies to Combat AMR in Marine Environments<br>
+                        •	Climate Change and AMR in Marine Environments<br>
+                        
+                        </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    
+    
+
+
+<br><br>
+  
+<section id="guidelines" class="guidelines-section">
+    <div class="section-header fade-in">
+        <h2>Submission Guidelines</h2>
+        <div class="underline"></div>
+    </div>
+    <div class="guidelines-grid">
+        <div class="guidelines-card1" onclick="window.location.href='poster-guidelines';">
+            <h3 style="color: rgb(48, 117, 149);">Guidelines for Poster Presentation</h3>
+        </div>
+        <div class="guidelines-card2" onclick="window.location.href='abstract-guidelines';">
+            <h3 style="color: rgb(48, 117, 149);">Guidelines for Abstract Submission</h3>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+    <section id="dates" class="dates-section">
+        <div class="section-header fade-in">
+            <h2>Important Dates</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="dates-timeline">
+            <div class="date-card slide-in-left">
+                <div class="date-icon">
+                    <i class="fas fa-calendar-plus"></i>
+                </div>
+                <div class="date-content">
+                    <h3>Registration Opens</h3>
+                    <p>01 January 2025</p>
+                    <span>Registration and Abstract submission begins</span>
+                </div>
+            </div>
+            <div class="date-card slide-in-right">
+                <div class="date-icon">
+                    <i class="fas fa-calendar-check"></i>
+                </div>
+                <div class="date-content">
+                    <h3>Submission Deadline</h3>
+                    <p>20 January 2025</p>
+                    <span>Last date for abstract submission</span>
+                </div>
+            </div>
+            <div class="date-card slide-in-left">
+                <div class="date-icon">
+                    <i class="fas fa-calendar-day"></i>
+                </div>
+                <div class="date-content">
+                    <h3>Conference Dates</h3>
+                    <p>April 9-11, 2025</p>
+                    <span>Main conference program</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+    <section id="registration" class="registration-section">
+        <div class="section-header fade-in">
+            <h2>Registration</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="registration-content">
+            <div class="fees-card slide-in-left">
+                <h3>Registration Fees</h3>
+                <div class="fee-grid">
+                    <div class="fee-item">
+                        <i class="fas fa-user-graduate"></i>
+                        <h4>Students</h4>
+                        <p>₹500/-</p>
+                    </div>
+                    <div class="fee-item">
+                        <i class="fas fa-microscope"></i>
+                        <h4>Research Scholars</h4>
+                        <p>₹1500/-</p>
+                    </div>
+                    <div class="fee-item">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                        <h4>Faculty/ Scientist</h4>
+                        <p>₹3000/-</p>
+                    </div>
+                    <div class="fee-item">
+                        <i class="fas fa-globe-asia"></i>
+                        <h4>International Faculty</h4>
+                        <p>USD 250</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bank-details-card slide-in-right">
+                <div class="fee-item">
+                    <h4>Registration not started</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section id="committee" class="committee-section">
+        <div class="section-header fade-in">
+            <h2>Organizing Committee</h2>
+            <div class="underline"></div>
+        </div>
+    
+        <!-- Patrons Section -->
+        <div class="sub-section fade-in">
+            <h3>Patrons</h3>
+            <div class="committee-grid">
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\patrons\1.jpg' %}" alt="Patron 1">
+                    <h4>Prof. (Dr.) M. Junaid Bushiri</h4>
+                    <p>Vice Chancellor, CUSAT
+                    </p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\patrons\2.jpg' %}" alt="Patron 2">
+                    <h4>Dr. M. Ravichandran</h4>
+                    <p>Secretary, Ministry of Earth Sciences, GoI</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\patrons\3.jpg' %}" alt="Patron 3">
+                    <h4>Prof. (Dr.) Arun A. U</h4>
+                    <p>Registrar, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\patrons\4.jpg' %}" alt="Patron 4">
+                    <h4>Dr. Thamban Meloth</h4>
+                    <p>Director, NCPOR, Goa</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Advisory Committee Section -->
+        <div class="sub-section fade-in">
+            <h3>Advisory Committee</h3>
+            <div class="committee-grid">
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\6.jpg' %}" alt="Advisory Member 1">
+                    <h4>Prof. (Dr.). A.A. Mohamed Hatha</h4>
+                    <p>Director, School of Marine Sciences,
+                        CUSAT
+                        </p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\7.jpg' %}" alt="Advisory Member 2">
+                    <h4>Dr. Thamban Meloth</h4>
+                    <p>Director, NCPOR, Goa</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\8.jpg' %}" alt="Advisory Member 3">
+                    <h4>Dr. M.V. Ramana Murthy</h4>
+                    <p>Director, NCCR, Chennai & Mission Director,
+                        DOM, MOES</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\9.jpg' %}" alt="Advisory Member 4">
+                    <h4>Prof.(Dr.) Bijoy Nandan</h4>
+                    <p>Dean, Faculty of Marine Sciences, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\11.jpg' %}" alt="Advisory Member 5">
+                    <h4>Dr. George Ninan</h4>
+                    <p>Director, ICAR-CIFT, Cochin</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\12.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. Grinson George</h4>
+                    <p>Director, ICAR-CMFRI, Cochin</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\13.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. Sunil Kumar Singh</h4>
+                    <p>Director, NIO, Goa</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\15.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. Sreenath K. R</h4>
+                    <p>Director General, FSI</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\16.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. M. Habibullah</h4>
+                    <p>Director, CIFNET, Cochin</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\17.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. M. Karthikeyan</h4>
+                    <p>Director, MPEDA, Cochin</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\18.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. G. V. M. Gupta</h4>
+                    <p>Director, CMLRE, Cochin</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\19.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. Jyothibabu R</h4>
+                    <p>, SIC, NIO-RC, Cochin</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\20.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. T. T. Ajith Kumar</h4>
+                    <p>Director, NBFGR,Cochin</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\22.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. Dharani G</h4>
+                    <p> Scientist G and Group Head (MBT), NIOT, Chennai</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\23.jpg' %}" alt="Advisory Member 1">
+                    <h4>Prof. (Dr.) Sunil P. S</h4>
+                    <p>HoD, DMGG, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\24.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. Abhilash S</h4>
+                    <p> HoD, DAS, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\25.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. P. K. Saji</h4>
+                    <p> HoD, POD, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\26.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. Habeeb Rahman</h4>
+                    <p>HoD, COD, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\27.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. Sabu S</h4>
+                    <p>Director, School of Industrial Fisheries, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\28.jpg' %}" alt="Advisory Member 1">
+                    <h4>Prof. (Dr.)Valsamma Joseph</h4>
+                    <p>Director, NCAAH, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\29.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. Vasu Sugunan</h4>
+                    <p>President, MBAA, DMBB, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\30.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. K. K.Vijayan</h4>
+                    <p> Former Director, CIBA, Chennai</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\31.jpg' %}" alt="Advisory Member 1">
+                    <h4>Prof. (Dr.) Rosamma Philip</h4>
+                    <p> Former Dean and HoD, DMMB, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\advisory_commitee\33.jpg' %}" alt="Advisory Member 1">
+                    <h4>Dr. N.P. Kurian</h4>
+                    <p> President, Ocean Society of India, Cochin</p>
+                </div>
+                <!-- Add additional advisory members by copying this structure -->
+            </div>
+        </div>
+    
+        <!-- Chief Committee Section -->
+        <div class="sub-section fade-in">
+            <h3>Chief Committee</h3>
+            <div class="committee-grid">
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\chief\34.jpg' %}" alt="Chief">
+                    <h4>Prof. (Dr.) Sajeevan T. P.</h4>
+                    <p>Professor and Head
+                        Department of Marine Biology, Microbiology & Biochemistry,
+                        Cochin University of Science and Technology</p>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Convenor Section -->
+        <div class="sub-section fade-in">
+            <h3>Convenors</h3>
+            <div class="committee-grid">
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\convenor\35.jpg' %}" alt="Convenor 1">
+                    <h4>Dr. Rahul Mohan</h4>
+                    <p> Scientist- F, Polar Sciences Group, NCPOR, Goa</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\convenor\36.jpg' %}" alt="Convenor 2">
+                    <h4>Dr. Swapna P Antony</h4>
+                    <p>Assistant Professor, DMMB, CUSAT</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\convenor\37.jpg' %}" alt="Convenor 3">
+                    <h4>Dr. Convenor 3</h4>
+                    <p>Coordinator</p>
+                </div>
+                <div class="committee-card">
+                    <img src="{% static '\img\committee\convenor\38.jpg' %}" alt="Convenor 4">
+                    <h4>Dr. Convenor 4</h4>
+                    <p>Coordinator</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+
+   
+
+    <section id="accommodation" class="accommodation-section">
+        <div class="section-header fade-in">
+            <h2>Accommodation</h2>
+            <div class="underline"></div>
+        </div>
+        
+        <!-- Nearest Hotel Box -->
+        <h3>Nearest Hotels</h3>
+        <div class="hotel-boxes">
+            <div class="hotel-box">
+                <img src="{% static '\img\hotels\hotel1.jpeg' %}" alt="Hotel Sea View" />
+                <div class="hotel-name">Hotel Sea View</div>
+                <div class="hotel-distance">Distance: 0.5 km</div>
+            </div>
+            <div class="hotel-box">
+                <img src="{% static '\img\hotels\hotel2.jpg' %}" alt="Marine Lodge" />
+                <div class="hotel-name">Marine Lodge</div>
+                <div class="hotel-distance">Distance: 1 km</div>
+            </div>
+            <div class="hotel-box">
+                <img src="{% static '\img\hotels\hotel3.jpeg' %}" alt="Ocean Heights" />
+                <div class="hotel-name">Ocean Heights</div>
+                <div class="hotel-distance">Distance: 1.5 km</div>
+            </div>
+        </div>
+    
+        <!-- Google Map Integration -->
+        <div class="map-container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.8354345094274!2d144.95373631531806!3d-37.81627937975171!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad65d43f1f5b8c1%3A0xf4c8a3168c5e2546!2sVictoria%20Harbour%20Promenade%2C%20Docklands%20VIC%203008%2C%20Australia!5e0!3m2!1sen!2sin!4v1601013258235!5m2!1sen!2sin"
+                class="map-iframe"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+            ></iframe>
+        </div>
+    </section>
+    
+    
+
+
+    <section id="contact" class="contact-section">
+        <div class="section-header fade-in">
+            <h2>Contact Us</h2>
+            <div class="underline"></div>
+        </div>
+        <div class="contact-content">
+            <div class="contact-info slide-in-left">
+                <div class="info-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Address</h3>
+                    <p>Department of Marine Biology, Microbiology and Biochemistry<br>
+                       Cochin University of Science and Technology<br>
+                       Fine Arts Avenue, Kochi-682016, Kerala, India</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>icmbgsd2025@gmail.com</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone</h3>
+                    <p>+91 484 2368120</p>
+                </div>
+            </div>
+            <div class="contact-form-container slide-in-right">
+                <form id="contactForm" class="contact-form">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" id="subject" name="subject" required>
+                        <label for="subject">Subject</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" required></textarea>
+                        <label for="message">Message</label>
+                    </div>
+                    <button type="submit" class="submit-btn">
+                        <span>Send Message</span>
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h3>ICMBGSD 25</h3>
+                <p>
+                    The conference focuses on marine biodiversity, genomics, and sustainable practices, bringing experts together to discuss conservation strategies, cutting-edge research, and innovative solutions for preserving marine ecosystems.
+                </p>
+            </div>
+            <div class="footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#speakers">Speakers</a></li>
+                    <li><a href="#themes">Themes</a></li>
+                    <li><a href="#guidelines">Guidelines</a></li>
+                    <li><a href="#dates">Important Dates</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact Us</h4>
+                <p>
+                    Cochin University of Science and Technology<br />
+                    Kalamassery, Kochi<br />
+                    Kerala, India - 682022
+                </p>
+                <p>
+                    <strong>Phone:</strong> +91 8882197762<br />
+                    <strong>Email:</strong> <a href="mailto:icmbgsdcusat@gmail.com">icmbgsdcusat@gmail.com</a>
+                </p>
+            </div>
+        </div>
+        <br>
+        <div class="footer-policy">
+            <a href="/privacy" target="_blank">Privacy Policy</a> | 
+            <a href="/terms" target="_blank">Terms and Conditions</a>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 ICMBGSD. All Rights Reserved.</p>
+        </div>
+        <div class="back-to-top">
+            <a href="#top" title="Back to top">
+                <i class="fa fa-arrow-up"></i>
+            </a>
+        </div>
+    </footer>
+    
+    
+
+
+</body>
+</html>

@@ -1,0 +1,137 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Maricon 2024</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600;1,700&family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+          rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href={% static "assets/vendor/bootstrap/css/bootstrap.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/bootstrap-icons/bootstrap-icons.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/fontawesome-free/css/all.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/glightbox/css/glightbox.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/swiper/swiper-bundle.min.css" %} rel="stylesheet">
+    <link href={% static "assets/vendor/aos/aos.css" %} rel="stylesheet">
+
+    <link href={% static 'assets/css/main.css' %} rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/img/logos/favicon.ico">
+</head>
+
+<body>
+
+{% include "new_maricon/header.html" %}
+<main id="main">
+
+    <!-- ======= Breadcrumbs ======= -->
+    <div class="breadcrumbs">
+        <div class="page-header d-flex align-items-center"
+             style="background-image: url({% static 'img/maricon_header.png' %})">
+            <div class="container position-relative">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-lg-6 text-center">
+                        <h2>Terms and Conditions</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav>
+            <div class="container">
+                <ol>
+                    <li><a href="/maricon/">Home</a></li>
+                    <li>Terms and Conditions</li>
+                </ol>
+            </div>
+        </nav>
+    </div>
+    <section id="hero " class="hero d-flex align-items-center" style="background-color: #f3f6fc">
+        <ol class="container text-dark">
+            <li><strong>Acceptance of Terms:</strong> By accessing and using the MARICON 2024 website, you agree to
+                comply with and be bound by these terms and conditions. If you do not agree with any part of these
+                terms, you must not use the website.
+            </li>
+
+            <li><strong>Intellectual Property:</strong> All content on the MARICON 2024 website, including but not
+                limited to text, graphics, logos, images, and audio/video materials, is the property of the organizers
+                and is protected by intellectual property laws. You may not reproduce, distribute, or use any content
+                from the website without prior written permission.
+            </li>
+
+            <li><strong>Conference Registration:</strong> Registration for MARICON 2024 is subject to the terms and
+                conditions set forth by the organizers. Participants are required to adhere to the registration
+                guidelines, including payment of registration fees by the specified deadlines.
+            </li>
+
+            <li><strong>Abstract Submission:</strong> Abstract submission for the conference is governed by the
+                guidelines provided by the organizers. The deadline for abstract submission is 15 March 2024.
+            </li>
+
+            <li><strong>Privacy Policy:</strong> The organizers respect the privacy of website users. Information
+                collected through the website will be used for conference-related purposes only and will not be shared
+                with third parties without consent. Please refer to the privacy policy for detailed information.
+            </li>
+
+            <li><strong>Disclaimer:</strong> The content on the MARICON 2024 website is provided for informational
+                purposes only. The organizers do not guarantee the accuracy, completeness, or reliability of any
+                information on the website. Users are encouraged to verify information independently.
+            </li>
+
+            <li><strong>Third-Party Links:</strong> The MARICON 2024 website may contain links to third-party websites.
+                These links are provided for convenience and do not imply endorsement. The organizers are not
+                responsible for the content or practices of third-party sites.
+            </li>
+
+            <li><strong>Code of Conduct:</strong> Participants using the MARICON 2024 website are expected to adhere to
+                a code of conduct that promotes respectful and inclusive communication. Any violation of this code may
+                result in the termination of website access.
+            </li>
+
+            <li><strong>Changes to Terms:</strong> The organizers reserve the right to update or modify these terms and
+                conditions at any time. Users are encouraged to review the terms periodically. Continued use of the
+                website after changes constitutes acceptance of the modified terms.
+            </li>
+
+            <li><strong>Governing Law:</strong> These terms and conditions are governed by the laws of the United
+                Kingdom. Any disputes arising from the use of the MARICON 2024 website shall be subject to the
+                jurisdiction of the UK courts.
+            </li>
+           
+        </ol>
+
+       
+
+    </section><!-- End Hero Section -->
+
+</main><!-- End #main -->
+{% include "new_maricon/footer.html" %}
+
+<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+<div id="preloader"></div>
+
+<!-- Vendor JS Files -->
+<script src={% static "assets/vendor/bootstrap/js/bootstrap.bundle.min.js" %}></script>
+<script src={% static "assets/vendor/purecounter/purecounter_vanilla.js" %}></script>
+<script src={% static "assets/vendor/glightbox/js/glightbox.min.js" %}></script>
+<script src={% static "assets/vendor/swiper/swiper-bundle.min.js" %}></script>
+<script src={% static "assets/vendor/aos/aos.js" %}></script>
+<script src={% static "assets/vendor/php-email-form/validate.js" %}></script>
+
+<!-- Template Main JS File -->
+<script src={% static "assets/js/main.js" %}></script>
+
+</body>
+
+</html>

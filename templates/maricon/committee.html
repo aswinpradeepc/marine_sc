@@ -1,0 +1,50 @@
+{% extends "maricon/base.html" %}
+{% block header %}
+    {% include "maricon/header.html" with committees=committee_names %}
+{% endblock %}
+
+{% block contents %}
+    {% for committee in committees %}
+        <section id="{{ forloop.counter }}" class="wow fadeInUp">
+
+            <div id="speakers" class="container">
+                <div class="section-header">
+                    <h2>{{ committee.committee }}</h2>
+                </div>
+                <div class="row">
+                    {% for member in committee.members %}
+                        <div class="col-lg-3 col-md-6">
+                            <div class="speaker">
+                                {% if member.image %}
+                                    <img src="{{ member.image.url }}" alt="{{ member.name }}" class="img-fluid">
+                                {% endif %}
+                                <div class="details">
+                                    <h3>{{ member.name }}</h3>
+                                    <p>{{ member.description }}</p>
+                                    <div class="social">
+                                        {% if member.twitter_link %}
+                                            <a href="{{ member.twitter_link }}"><i class="fa fa-twitter"></i></a>
+                                        {% endif %}
+                                        {% if member.facebook_link %}
+                                            <a href="{{ member.facebook_link }}"><i class="fa fa-facebook"></i></a>
+                                        {% endif %}
+                                        {% if member.google_plus_link %}
+                                            <a href="{{ member.google_plus_link }}"><i
+                                                    class="fa fa-google-plus"></i></a>
+                                        {% endif %}
+                                        {% if member.linkedin_link %}
+                                            <a href="{{ member.linkedin_link }}"><i class="fa fa-linkedin"></i></a>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+        </section>
+    {% endfor %}
+
+    {% include "maricon/footer.html" with committees=committee_names %}
+{% endblock %}

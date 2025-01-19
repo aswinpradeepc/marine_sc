@@ -1,0 +1,232 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>MARICON</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+    <!-- Favicons -->
+    <!-- <link href="{% static 'img/favicon.png' %}" rel="icon"> -->
+    <link href="{% static 'img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Raleway:300,400,500,700,800"
+          rel="stylesheet">
+
+    <!-- Bootstrap CSS File -->
+    <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Libraries CSS Files -->
+    <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/venobox/venobox.css' %}" rel="stylesheet">
+    <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+
+    <!-- Main Stylesheet File -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="/static/img/logos/favicon.ico">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.js"
+            integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+            crossorigin="anonymous">
+    </script>
+    <script src="{% static 'js/some_script.js' %}"></script>
+
+    <style>
+
+
+        .countdown-container {
+            display: flex;
+            width: 100%;
+            max-width: 50%;
+            justify-content: space-between;
+        }
+
+        .days-container,
+        .hours-container,
+        .minutes-container,
+        .seconds-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(51, 153, 204, 0.23);
+            border: 5px solid rgb(255, 255, 255);
+            width: 140px;
+            height: 140px;
+            border-radius: 99px;
+            color: white;
+
+        }
+
+        .days,
+        .hours,
+        .minutes,
+        .seconds {
+            font-size: 2.5em;
+            margin: 10px 0;
+        }
+
+
+        .days-label,
+        .hours-label,
+        .minutes-label,
+        .seconds-label {
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 800px) {
+
+            .countdown-container {
+                max-width: 90%;
+            }
+
+            .days-container,
+            .hours-container,
+            .minutes-container,
+            .seconds-container {
+                font-size: 0.8em;
+                width: 100px;
+                height: 100px;
+            }
+
+            .days,
+            .hours,
+            .minutes,
+            .seconds {
+                font-size: 1.5em;
+
+            }
+        }
+
+
+    </style>
+
+    <script>
+        const countDownClock = (number = 100, format = 'seconds') => {
+
+            const d = document;
+            const daysElement = d.querySelector('.days');
+            const hoursElement = d.querySelector('.hours');
+            const minutesElement = d.querySelector('.minutes');
+            const secondsElement = d.querySelector('.seconds');
+            let countdown;
+            convertFormat(format);
+
+
+            function convertFormat(format) {
+                switch (format) {
+                    case 'seconds':
+                        return timer(number);
+                    case 'minutes':
+                        return timer(number * 60);
+                    case 'hours':
+                        return timer(number * 60 * 60);
+                    case 'days':
+                        return timer(number * 60 * 60 * 24);
+                }
+            }
+
+            function timer(seconds) {
+                const now = Date.now();
+                const then = now + seconds * 1000;
+
+                countdown = setInterval(() => {
+                    const secondsLeft = Math.round((then - Date.now()) / 1000);
+
+                    if (secondsLeft <= 0) {
+                        clearInterval(countdown);
+                        return;
+                    }
+                    ;
+
+                    displayTimeLeft(secondsLeft);
+
+                }, 1000);
+            }
+
+            function displayTimeLeft(seconds) {
+                daysElement.textContent = Math.floor(seconds / 86400);
+                hoursElement.textContent = Math.floor((seconds % 86400) / 3600);
+                minutesElement.textContent = Math.floor((seconds % 86400) % 3600 / 60);
+                secondsElement.textContent = seconds % 60 < 10 ? `0${seconds % 60}` : seconds % 60;
+            }
+        }
+        window.onload = function () {
+            const end_date = new Date("2024-03-25T00:00:00").getTime();
+            const now = new Date().getTime();
+            const distance = end_date - now;
+            const seconds = Math.floor(distance / 1000);
+            countDownClock(seconds, 'seconds');
+
+
+        }
+    </script>
+</head>
+
+<body>
+
+{% block header %}
+{% endblock %}
+<!--==========================
+Intro Section
+============================-->
+<section id="intro" class="bg-sea">
+    <div class="intro-container wow fadeIn">
+        <h1 class="mb-4 pb-0">International Conference on
+            <br><span>“Frontiers in Marine Sciences”</span></h1>
+        <p class="mb-4 pb-0">Organised by School of Marine Sciences, CUSAT</p>
+        <a href="#about" class="about-btn scrollto">Background</a>
+        <div class="countdown-container">
+            <div class="days-container">
+                <div class="days"></div>
+                <div class="days-label">days</div>
+            </div>
+
+            <div class="hours-container">
+                <div class="hours"></div>
+                <div class="hours-label">hours</div>
+            </div>
+
+            <div class="minutes-container">
+                <div class="minutes"></div>
+                <div class="minutes-label">minutes</div>
+            </div>
+
+            <div class="seconds-container">
+                <div class="seconds"></div>
+                <div class="seconds-label">seconds</div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<main id="main">
+
+    {% block contents %}
+    {% endblock %}
+   
+</main>
+<a href="#" class="back-to-top"><i class="fa fa-angle-up"></i></a>
+<!-- JavaScript Libraries -->
+<script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+<script src="{% static 'lib/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'lib/easing/easing.min.js' %}"></script>
+<script src="{% static 'lib/superfish/hoverIntent.js' %}"></script>
+<script src="{% static 'lib/superfish/superfish.min.js' %}"></script>
+<script src="{% static 'lib/wow/wow.min.js' %}"></script>
+<script src="{% static 'lib/venobox/venobox.min.js' %}"></script>
+<script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+
+<!-- Template Main Javascript File -->
+<script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>
