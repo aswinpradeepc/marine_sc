@@ -175,7 +175,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587  # or appropriate port
-EMAIL_HOST_USER = 'eoccusat@gmail.com'
-EMAIL_HOST_PASSWORD = 'qsqtmdpbwqfuctip'
+EMAIL_HOST_USER = 'icmbgsdcusat@gmail.com'
+EMAIL_HOST_PASSWORD = 'slbw ivmr jutu poak'
 EMAIL_USE_TLS = True  # or False depending on your server
 

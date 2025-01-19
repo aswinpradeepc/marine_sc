@@ -38,7 +38,7 @@ services:
   nginx:
     image: nginx:latest
     ports:
-      - "8002:80"
+      - "99:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./staticfiles:/code/staticfiles

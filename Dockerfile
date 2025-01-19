@@ -24,4 +24,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 
 # Expose the port on which Gunicorn will run
-EXPOSE 8002
+EXPOSE 8000
