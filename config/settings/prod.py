@@ -22,7 +22,7 @@ DATABASES = {
 
 # Allowed hosts
 ALLOWED_HOSTS = [
-#    'your-staging-url.com',
+    '10.0.6.27',
 
 
 ]

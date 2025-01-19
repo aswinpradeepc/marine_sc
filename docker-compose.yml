@@ -1,4 +1,4 @@
-version: '3.8'
+version: '3.3'
 
 services:
   web:
@@ -11,8 +11,7 @@ services:
     env_file:
       - .env
     depends_on:
-      db:
-        condition: service_healthy
+      - db
     networks:
       - nginx_network
 
@@ -36,19 +35,10 @@ services:
     networks:
       - nginx_network
 
-#  pgadmin:
-#    image: dpage/pgadmin4
-#    env_file:
-#      - .env
-#    volumes:
-#      - pgadmin_data:/var/lib/pgadmin
-#    networks:
-#      - nginx_network
-
   nginx:
     image: nginx:latest
     ports:
-      - "8000:80"
+      - "8002:80"
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
       - ./staticfiles:/code/staticfiles
@@ -57,21 +47,6 @@ services:
       - web
     networks:
       - nginx_network
-
-#  metabase:
-#    image: metabase/metabase
-#    volumes:
-#      - metabase_data:/metabase-data
-#    env_file:
-#      - .env
-#    ports:
-#      - "3002:3000"
-#    networks:
-#      - nginx_network
-#    depends_on:
-#      db:
-#        condition: service_healthy
-#    restart: unless-stopped
 
 volumes:
   ps_data:
