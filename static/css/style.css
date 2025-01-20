@@ -16,7 +16,7 @@ section {
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  /*box-sizing: border-box;*/
 }
 
 
@@ -40,8 +40,6 @@ body {
   background-color: var(--primary-dark);
   color: var(--text-light);
   line-height: 1.6;
-
-
 
 }
 
@@ -169,7 +167,7 @@ nav {
 
 .hero-content {
   font-family: 'Merriweather', serif;
-  max-width: 800px; 
+  /*max-width: 800px; */
   padding: 3.8rem;
 }
 
@@ -211,6 +209,7 @@ h2 {
   width: auto; /* Maintain original width */
   height: 160px; /* Maintain original height */
   border-radius: 0; /* No forced border */
+  border: 0px;
   object-fit: contain; /* Preserve aspect ratio */
   background: transparent; /* Ensure background is transparent */
   margin: 0 10px; /* Optional spacing adjustment */
@@ -484,7 +483,7 @@ h2 {
 
 
 .dates-content, .registration-content, .contact-content {
-  max-width: 800px;
+  /*max-width: 800px;*/
   margin: 0 auto;
 }
 
@@ -503,9 +502,8 @@ h2 {
   background: rgba(112, 177, 190, 0.1);
   border-radius: 10px;
   border-left: 4px solid var(--secondary-blue);
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+  /*max-width: 800px;*/
+
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
@@ -616,7 +614,7 @@ h2 {
 .about-content {
   display: flex;
   gap: 3rem;
-  max-width: 1200px;
+  /*max-width: 1200px;*/
   margin: 0 auto;
   position: relative;
   z-index: 1;
@@ -820,7 +818,7 @@ h2 {
   flex-direction: column;
   align-items: center;
   gap: 2rem; 
-  max-width: 800px; 
+  /*max-width: 800px; */
   margin: 0 auto; 
 }
 
@@ -939,23 +937,23 @@ h2 {
 }
 
 .guidelines-card1{
-  background: rgba(240, 244, 248, 0.95);
-  padding: 1.5rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 300px; 
-  flex: 1; 
-  text-align: center; 
+  /*background: rgba(240, 244, 248, 0.95);*/
+  /*padding: 1.5rem;*/
+  /*border-radius: 10px;*/
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+  /*max-width: 300px; */
+  /*flex: 1; */
+  /*text-align: center; */
   transition: transform 0.3s ease;
 }
 .guidelines-card2{
   background: rgba(240, 244, 248, 0.95);
   padding: 1.8rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 300px; 
-  flex: 1; 
-  text-align: center;
+  /*border-radius: 10px;*/
+  /*box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+  /*max-width: 300px; */
+  /*flex: 1; */
+  /*text-align: center;*/
   transition: transform 0.3s ease;
 }
 
@@ -971,6 +969,50 @@ h2 {
 }
 
 
+
+
+/* Ensure all cards have the same height */
+.date-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Animation for the cards */
+.date-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Animation for fading in the section */
+#dates {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Optional: Add a slide-in effect for the icons */
+.date-icon {
+    animation: slideIn 1s ease-out forwards;
+}
+
+@keyframes slideIn {
+    0% {
+        transform: translateX(-50px);
+        opacity: 0;
+    }
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
 
 
 
@@ -992,7 +1034,7 @@ h2 {
 }
 
 .dates-timeline {
-  display: grid;
+  display: flex;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 2rem;
 }
@@ -2043,5 +2085,41 @@ html {
 
 
 
+.zoom-animation {
+    transition: transform 0.3s ease;
+}
+.zoom-animation:hover {
+    transform: scale(1.05);
+}
 
-
+.theme-card {
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.theme-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+.card-img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+.card-img-overlay {
+    transition: background-color 0.3s ease;
+}
+.theme-card:hover .card-img-overlay {
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.image-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 0.5rem;
+}
+.overlay-text {
+    background: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+    transition: background 0.3s ease;
+}
+.overlay-text:hover {
+    background: rgba(0, 0, 0, 0.5); /* Darker background on hover */
+}

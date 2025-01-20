@@ -2,8 +2,8 @@
 
 {% block new_footer %}
 
-<nav>
-    <div class="logo-container">
+<nav class="d-flex justify-content-center align-items-center">
+    <div class="logo-container mx-5">
         <img src="{% static '\img\logos\logo.png'%}" alt="Icon" class="logo" />
         <span><b>ICMBGSD</b></span>
     </div>
@@ -12,7 +12,7 @@
         <span></span>
         <span></span>
     </div>
-    <div class="nav-links">
+    <div class="nav-links ">
         <a href="/#home">Home</a>
         <a href="/#about">About</a>
         <a href="/#speakers">Speakers</a>
@@ -23,6 +23,7 @@
         <a href="/#committee">Committee</a>
         <a href="/#accommodation">Accommodation</a>
         <a href="/#contact">Contact</a>
+        <a class="btn btn-primary text-white" href="{% url 'register' %}">Register</a>
     </div>
 </nav>
 
