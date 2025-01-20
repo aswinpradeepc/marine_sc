@@ -37,6 +37,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
@@ -44,7 +45,7 @@
 <main>
     {% include "new_maricon/new_nav.html" %}
 
-    <section class="w-100 vh-100">
+    <section id="home" class="w-100 vh-100">
         <!-- Carousel -->
         <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <!-- Carousel Indicators -->
@@ -128,7 +129,7 @@
         </div>
     </section>
 
-    <section class="container my-5 py-5 ">
+    <section id="about" class="container my-5 py-5 " data-aos="fade-up" data-aos-delay="300">
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <img src="{% static 'img/logos/2.jpg' %}" alt="Department Image" class="img-fluid rounded-1">
@@ -147,64 +148,52 @@
         </div>
     </section>
 
-    <section id="about" class="container d-flex justify-content-center flex-column py-5">
-        <div class="text-center mb-4 fade-in">
-            <h2 class="mb-2 fw-bold">About</h2>
-            <div class="underline mx-auto"></div>
-        </div>
-        <div class="d-flex justify-content-center row gap-4">
-            <!-- Background Card -->
-            <div class="col-lg-6 fade-in department-name  ">
-                <div class=" h-100 border-0 mx-3 ">
-                    <div class="card-body text-center">
-                        <div class="mb-3">
-                            <i class="fas fa-water fa-2x text-primary"></i>
-                        </div>
-                        <h3 class="card-title">Background</h3>
-                        <p class="card-text">
-                            Oceans covering 2/3 of planet earth, which is teeming with various kinds of living organisms
-                            ranging from microscopic prokaryotes to the mammoth blue whales. Each of them has a definite
-                            role in the huge marine ecosystem and supports humanity with great amounts of food and other
-                            products and services.
-                        </p>
-                        <p class="card-text">
-                            However, the perturbations in the marine environment due to ocean acidification and increase
-                            in sea surface temperatures, ever increasing quantities of marine litter and the coastal
-                            pollution has started affecting the biological communities in a significant manner which
-                            will
-                            affect the very existence of humans on planet earth...
-                        </p>
-                    </div>
+    <div class="container my-5">
+        <div class="row g-4">
+            <!-- Left Column -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="content-box">
+                    <h4>Department of Marine Biology, Microbiology, and Biochemistry (DMMB)</h4>
+                    <p>The Department of Marine Biology, Microbiology, and Biochemistry (DMMB), originally founded as
+                        the Department of Marine Biology and Fisheries in 1938 under the University of Travancore,
+                        became part of Cochin University of Science and Technology (CUSAT) in 1971. Established to
+                        address the growing need for understanding marine ecosystems and their sustainable management,
+                        DMMB has evolved into a center of excellence.</p>
+                    <p>It is now one of the five departments under the School of Marine Sciences, contributing
+                        significantly to global ocean exploration and human welfare. Recognized under prestigious
+                        programs like DST-FIST, UGC-SAP, KSCSTE-SARD, and RUSA, DMMB is a research-intensive department
+                        offering state-of-the-art laboratories and advanced instrumentation.</p>
+                    <p>Its flagship M.Sc. Marine Biology program is among the most sought-after in India. Recently, the
+                        department introduced an M.Sc. Marine Genomics program, complementing the Marine Biology
+                        curriculum and positioning itself at the forefront of marine science research and education.</p>
                 </div>
             </div>
-            <!-- Department Card -->
-            <div class="col-lg-6 fade-in department-name  ">
-                <div class=" h-100 border-0">
-                    <div class="card-body text-center">
-                        <div class="mb-3">
-                            <i class="fas fa-university fa-2x text-primary"></i>
-                        </div>
-                        <h3 class="card-title">Department</h3>
-                        <p class="card-text">
-                            DMMB is an integral part of the School of Marine Sciences CUSAT, which is one of its kind
-                            School
-                            in the country with all branches of marine sciences under the same umbrella.
-                        </p>
-                        <p class="card-text">
-                            Being a highly research intensive department, DMMB is recognized under DST-FIST, UGC-SAP,
-                            KSCSTE-SARD and RUSA...
-                        </p>
-                    </div>
+            <!-- Right Column -->
+            <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="content-box">
+                    <h4>About the Conference</h4>
+                    <p>The International Conference on Marine Biodiversity, Genomics, and Sustainable Development
+                        (ICMBGSD2025) holds significant importance in the context of global environmental
+                        challenges.</p>
+                    <p>Oceans cover two-thirds of the Earth's surface, teeming with diverse organisms, from microscopic
+                        prokaryotes to massive blue whales. Each species plays a vital role in the marine ecosystem,
+                        which provides essential food, resources, and services to humanity. However, ongoing disruptions
+                        such as ocean acidification, rising sea surface temperatures, increased marine litter, and
+                        coastal pollution are increasingly affecting marine biodiversity.</p>
+                    <p>ICMBGSD2025 provides a unique platform for interaction among leading researchers, scientists, and
+                        academics in this field, offering an opportunity to assess the current state of marine
+                        ecosystems and devise strategies for the sustainable utilization of oceanic biological
+                        resources.</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
     <section id="speakers" class="container py-5 d-flex flex-column">
         <div class="text-center mb-5">
             <h2>Keynote Speakers</h2>
             <div class="underline mx-auto"></div>
         </div>
-        <div class="row gy-4">
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="600">
             <!-- Speaker Cards -->
             <div class="col-12 col-sm-6 col-md-3 col-lg-3">
                 <div class="card h-100">
@@ -326,7 +315,7 @@
             <div class="underline mx-auto"></div>
         </div>
         <div class="container">
-            <div class="row g-4">
+            <div class="row g-4 " data-aos="fade-up" data-aos-delay="600">
                 <!-- Image with Text Overlay 1 -->
                 <div class="col-lg-4 col-md-6 col-sm-12">
                     <div class="image-container position-relative h-100" data-bs-toggle="modal"
@@ -687,7 +676,7 @@
             <h2>Submission Guidelines</h2>
             <div class="underline mx-auto"></div>
         </div>
-        <div class="container">
+        <div class="container" data-aos="fade-up" data-aos-delay="600">
             <div class="row d-flex justify-content-center align-items-center g-4">
                 <!-- Poster Presentation Guidelines Card -->
                 <div class=" col-lg-6 col-md-12 d-flex w-100 h-100">
@@ -715,10 +704,10 @@
             <h2>Important Dates</h2>
             <div class="underline mx-auto"></div>
         </div>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" data-aos="fade-up" data-aos-delay="600">
             <!-- Registration Opens Card -->
             <div class="col">
-                <div class="card shadow-sm border-0 p-4 h-100 animate__animated animate__fadeInLeft">
+                <div class="card  border-0 p-4 h-100 animate__animated animate__fadeInLeft">
                     <div class="card-body text-center">
                         <div class="mb-3">
                             <i class="fas fa-calendar-plus fa-3x text-primary"></i>
@@ -732,7 +721,7 @@
 
             <!-- Submission Deadline Card -->
             <div class="col">
-                <div class="card shadow-sm border-0 p-4 h-100 animate__animated animate__fadeInRight">
+                <div class="card  border-0 p-4 h-100 animate__animated animate__fadeInRight">
                     <div class="card-body text-center">
                         <div class="mb-3">
                             <i class="fas fa-calendar-check fa-3x text-success"></i>
@@ -746,7 +735,7 @@
 
             <!-- Conference Dates Card -->
             <div class="col">
-                <div class="card shadow-sm border-0 p-4 h-100 animate__animated animate__fadeInLeft">
+                <div class="card  border-0 p-4 h-100 animate__animated animate__fadeInLeft">
                     <div class="card-body text-center">
                         <div class="mb-3">
                             <i class="fas fa-calendar-day fa-3x text-info"></i>
@@ -766,10 +755,10 @@
             <h2>Registration</h2>
             <div class="underline mx-auto"></div>
         </div>
-        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4" data-aos="fade-up" data-aos-delay="600">
             <!-- Students Card -->
             <div class="col">
-                <div class="card text-center p-4 border rounded shadow-sm h-100">
+                <div class="card text-center p-4 border rounded  h-100">
                     <h5 class="fw-bold">Students</h5>
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Registration Fee</span>
@@ -779,7 +768,7 @@
             </div>
             <!-- Research Scholars Card -->
             <div class="col">
-                <div class="card text-center p-4 border rounded shadow-sm h-100">
+                <div class="card text-center p-4 border rounded  h-100">
                     <h5 class="fw-bold">Research Scholars</h5>
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Registration Fee</span>
@@ -789,7 +778,7 @@
             </div>
             <!-- Faculty/Scientist Card -->
             <div class="col">
-                <div class="card text-center p-4 border rounded shadow-sm h-100">
+                <div class="card text-center p-4 border rounded  h-100">
                     <h5 class="fw-bold">Faculty/Scientist</h5>
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Registration Fee</span>
@@ -799,7 +788,7 @@
             </div>
             <!-- International Faculty Card -->
             <div class="col">
-                <div class="card text-center p-4 border rounded shadow-sm h-100">
+                <div class="card text-center p-4 border rounded  h-100">
                     <h5 class="fw-bold">International Faculty</h5>
                     <div class="d-flex justify-content-between align-items-center">
                         <span>Registration Fee</span>
@@ -810,7 +799,8 @@
 
         </div>
         <div class="row my-5">
-            <div class="d-flex justify-content-center align-items-center card text-center p-4 border rounded shadow-sm  h-100">
+            <div class="d-flex justify-content-center align-items-center card text-center p-4 border rounded   h-100"
+                 data-aos="fade-up" data-aos-delay="800">
                 <h4 class="fw-bold">Registration is now Live.</h4>
                 <div class="my-2  underline mx-auto"></div>
                 <div class=" my-3 d-flex justify-content-between align-items-center">
@@ -826,7 +816,7 @@
             <h2>Organizing Committee</h2>
             <div class="underline mx-auto"></div>
         </div>
-        <div class="row gy-4">
+        <div class="row gy-4" data-aos="fade-up" data-aos-delay="600">
             <div class="d-flex justify-content-center align-items-center">
                 <h3>Patrons</h3>
             </div>
@@ -1234,7 +1224,7 @@
             <div class="col-12 col-sm-6 col-md-3 col-lg-3">
                 <div class="card h-100">
                     <div class="ratio ratio-1x1">
-                        <img src="{% static '\img\committee\chief\34.jpg' %}"
+                        <img src="{% static '\img\committee\chief\34.jpeg' %}"
                              class="card-img-top object-fit-cover" alt="Advisory Member 20">
                     </div>
                     <div class="card-body text-center">
@@ -1297,55 +1287,56 @@
 
     </section>
 
-    <section>
+    <section id="accommodation">
         <div class="container d-flex flex-column justify-content-center align-items-center mt-4">
             <div class="text-center mb-5">
                 <h2>Nearest Hotels</h2>
                 <div class="underline mx-auto"></div>
             </div>
-            <div class=" mb-5 row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
-                <!-- Hotel 1 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="{% static '\img\hotels\hotel1.jpeg' %}" class="card-img-top" alt="Hotel Sea View"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Hotel Sea View</h5>
-                            <p class="card-text text-muted">
-                                <i class="fas fa-map-marker-alt me-2"></i>Distance: 0.5 km
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hotel 2 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="{% static '\img\hotels\hotel2.jpg' %}" class="card-img-top" alt="Marine Lodge"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Marine Lodge</h5>
-                            <p class="card-text text-muted">
-                                <i class="fas fa-map-marker-alt me-2"></i>Distance: 1 km
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Hotel 3 -->
-                <div class="col">
-                    <div class="card h-100">
-                        <img src="{% static '\img\hotels\hotel3.jpeg' %}" class="card-img-top" alt="Ocean Heights"
-                             style="height: 200px; object-fit: cover;">
-                        <div class="card-body">
-                            <h5 class="card-title">Ocean Heights</h5>
-                            <p class="card-text text-muted">
-                                <i class="fas fa-map-marker-alt me-2"></i>Distance: 1.5 km
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <a class="btn btn-secondary btn-sm mb-5" target="_blank" href="https://www.google.com/maps/search/Hotels/@9.964305,76.2838587,17.25z/data=!4m8!2m7!3m6!1sHotels!2sX77M%2BV27+CUSAT+Lakeside+campus,+University+of+Science+and+Technology,+Lakeside+campus,+Kochi,+682016!3s0x3b0873c203d8d759:0x1ca7c19f32c2ef71!4m2!1d76.2825477!2d9.9646695?entry=ttu&g_ep=EgoyMDI1MDEwNy4wIKXMDSoASAFQAw%3D%3D">Click here to see the nearest hotels</a>
+            {#            <div class=" mb-5 row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4" data-aos="fade-up" data-aos-delay="600">#}
+            {#                <!-- Hotel 1 -->#}
+            {#                <div class="col">#}
+            {#                    <div class="card h-100">#}
+            {#                        <img src="{% static '\img\hotels\hotel1.jpeg' %}" class="card-img-top" alt="Hotel Sea View"#}
+            {#                             style="height: 200px; object-fit: cover;">#}
+            {#                        <div class="card-body">#}
+            {#                            <h5 class="card-title">Hotel Sea View</h5>#}
+            {#                            <p class="card-text text-muted">#}
+            {#                                <i class="fas fa-map-marker-alt me-2"></i>Distance: 0.5 km#}
+            {#                            </p>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {##}
+            {#                <!-- Hotel 2 -->#}
+            {#                <div class="col">#}
+            {#                    <div class="card h-100">#}
+            {#                        <img src="{% static '\img\hotels\hotel2.jpg' %}" class="card-img-top" alt="Marine Lodge"#}
+            {#                             style="height: 200px; object-fit: cover;">#}
+            {#                        <div class="card-body">#}
+            {#                            <h5 class="card-title">Marine Lodge</h5>#}
+            {#                            <p class="card-text text-muted">#}
+            {#                                <i class="fas fa-map-marker-alt me-2"></i>Distance: 1 km#}
+            {#                            </p>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {##}
+            {#                <!-- Hotel 3 -->#}
+            {#                <div class="col">#}
+            {#                    <div class="card h-100">#}
+            {#                        <img src="{% static '\img\hotels\hotel3.jpeg' %}" class="card-img-top" alt="Ocean Heights"#}
+            {#                             style="height: 200px; object-fit: cover;">#}
+            {#                        <div class="card-body">#}
+            {#                            <h5 class="card-title">Ocean Heights</h5>#}
+            {#                            <p class="card-text text-muted">#}
+            {#                                <i class="fas fa-map-marker-alt me-2"></i>Distance: 1.5 km#}
+            {#                            </p>#}
+            {#                        </div>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
 
             <div class="ratio ratio-21x9">
                 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3929.630487004851!2d76.27997277687967!3d9.96466949013894!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0873c203d8d759%3A0x1ca7c19f32c2ef71!2sCUSAT%20Lakeside%20campus!5e0!3m2!1sen!2sin!4v1737396856830!5m2!1sen!2sin"
@@ -1365,7 +1356,7 @@
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row" data-aos="fade-up" data-aos-delay="600">
                 <!-- Contact Info Column -->
                 <div class="col-md-5 mb-4 mb-md-0">
                     <div class="row g-4">
@@ -1459,8 +1450,18 @@
 
 
     {% include "new_maricon/new_footer.html" %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        AOS.init({
+            duration: 800, // Duration in milliseconds
+            easing: 'ease-in-out', // Easing function
+            offset: 50, // Trigger offset (in px)
+            once: true, // Animation occurs only once
+        });
+    </script>
 </main>
 
 
