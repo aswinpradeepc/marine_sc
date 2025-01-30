@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Maricon 2024</title>
+    <title> ICMBGSD 25  </title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -60,16 +60,15 @@
                         <form action="/payment/" accept-charset="UTF-8" method="post" class="mt-3">
                             {% csrf_token %}
                             <div class="mb-3">
-                                <select name="category" class="form-control" required>
-                                    <option value="" disabled selected>Select Category</option>
-                                    <option value="id">International Delegates</option>
-                                    <option value="is">International Students</option>
-                                    <option value="nd">National Delegates</option>
-                                    <option value="rs">Research Scholars</option>
-                                    <option value="sp">Student Participants</option>
-                                    <option value="in">Invalid option - Do not select this option</option>
-                                </select>
-                            </div>
+    <select name="category" class="form-control" required>
+        <option value="" disabled selected>Select Category</option>
+        {% for key, details in amount_dict.items %}
+            <option value="{{ key }}">
+                {{ details.name }} - {{ details.amount }} {{ details.currency }}
+            </option>
+        {% endfor %}
+    </select>
+</div>
                             <button type="submit" class="btn btn-primary w-100">Proceed to Pay</button>
                         </form>
                     </div>

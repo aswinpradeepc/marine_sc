@@ -13,7 +13,7 @@ def payment_completed(view_func):
     @wraps(view_func)
     def _wrapped_view(request, *args, **kwargs):
         if not request.user.is_authenticated:
-            return redirect('/maricon/login/')
+            return redirect('/login/')
         elif not payment_completed_test(request.user):
             # Redirect to a page indicating payment completion is required
             return redirect('/payment/')

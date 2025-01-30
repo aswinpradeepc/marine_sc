@@ -80,6 +80,11 @@ class RegisterView(AbstractView):
         context['form'] = SignUpForm()
         return context
 
+    def get(self, request):
+        if request.user.is_authenticated:
+            return redirect('/payment')
+        return super().get(request)
+
     def post(self, request):
 
         if request.method == 'POST':
@@ -183,8 +188,8 @@ def submission_view(request):
                 logger.debug("email sent to admin")
                 context['abstract'] = abstract
                 sendmail(
-                    f"Dear sir, You have been successfully submitted the abstract for the presentation in MARICON-2024” ",
-                    request.user.email, "Maricon abstract submission"
+                    f"Dear sir, You have been successfully submitted the abstract for the presentation in ICMBGSD-2025” ",
+                    request.user.email, "ICMBGSD-2025 abstract submission"
                 )
                 messages.success(request, 'Abstract submitted successfully!')
                 return render(request, 'new_maricon/abstract.html', context)
@@ -194,7 +199,7 @@ def submission_view(request):
                 sendmail(
                     f"Dear sir, "
                     f"Your abstract has failed, please try again or contact the team is issue persists"
-                    "With Regards \n Maricon", request.user.email, "Maricon abstract submission"
+                    "With Regards \n ICMBGSD-2025", request.user.email, "ICMBGSD-2025 abstract submission"
                 )
 
         else:
@@ -324,7 +329,7 @@ def contact_form(request):
         con.save()
 
         # Redirect or show success message
-        return redirect('maricon')
+        return redirect('/')
 
 
 class PrivacyPolicyView(AbstractView):

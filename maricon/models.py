@@ -7,35 +7,15 @@ from django.db import models
 
 from config.settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
 
-THEMES = [" Oceans and Climate change",
-          "Coastal Processes and Estuarine Dynamics",
-          " Marine Bio-geochemical Dynamics.",
-          "Marine Bio-prospecting – Natural Products and Drugs",
-          "Marine Pollution and Ecotoxicology",
-          "Coupled  Ocean Atmospheric Modeling",
-          ' Air - Sea Interactions',
-          "Remote Sensing Applications in Earth System Sciences",
-          'Isotope Geochemistry',
-          'Environmental Geosciences and Geohazards',
-          'Deep Continental Studies and Geodynamics',
-          'Quaternary Environment and Paleoclimate',
-          'Geo - Marine Resources and Exploration',
-          'Submarine Groundwater Discharge and Mapping',
-          'Marine Biodiversity and Conservation',
-          'Marine Genomics',
-          'Advancements in Aquaculture',
-          'Aquatic Animal Health and Management Strategies',
-          'Regional Climate Modeling',
-          'Ocean Observation Systems',
-          'Monsoon Prediction and Predictability',
-          'Aerosols and Air Quality',
-          'Fisheries for Food Security and Sustainable Livelihoods',
-          'Marine Policies and Regulations',
-          'Societal Applications of Marine-Geosciences',
-          'Polar Sciences']
+THEMES = ["Marine Biodiversity and Conservation",
+          "Sustainable Fisheries, Aquaculture and Blue Economy",
+          "Marine Biotechnology and Genomics",
+          "Marine Natural Products and Drug Discovery",
+          "Polar Biology, Climate Change and Ocean Health",
+          "Marine Microbiology and Anti-Microbial Resistance"
+          ]
 
-
-def send_email(message, receiver, subject="Maricon Registration/Login verification"):
+def send_email(message, receiver, subject="ICMBGSD 25  Registration/Login verification"):
     port = 587  # For starttls
     smtp_server = "smtp.gmail.com"
     sender_email = EMAIL_HOST_USER
@@ -182,7 +162,7 @@ class OTP(models.Model):
         return not self.expired and not self.used
 
     def send_email(self):
-        msg = "Your OTP for login to Maricon is  " + self.otp + "  Please enter this OTP to login."
+        msg = "Your OTP for login to ICMBGSD 25  is  " + self.otp + "  Please enter this OTP to login."
         threading.Thread(target=send_email, args=(msg, self.user.email, self.otp)).start()
 
 
@@ -203,7 +183,7 @@ class PaperAbstract(models.Model):
 
     def send_email(self):
         msg = (f"New Abstract {self.title}, Submitted  by {self.user.full_name} ({self.user.email})"
-               f" on the theme {self.theme} use the link to download the file https://marine.cusat.ac.in{self.file.url}")
+               f" on the theme {self.theme} use the link to download the file https://icmbgsd2025.cusat.ac.in{self.file.url}")
         threading.Thread(target=send_email, args=(msg, EMAIL_HOST_USER, "New abstract submission")).start()
 
 

@@ -2,17 +2,17 @@ from django.contrib import admin
 
 from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, Committee, OTP, PaperAbstract, Contact
 
-admin.site.register(CommitteeMember)
-admin.site.register(Gallery)
-admin.site.register(Speaker)
-admin.site.register(Sponsor)
-admin.site.register(Faq)
-admin.site.register(Schedule)
+# admin.site.register(CommitteeMember)
+# admin.site.register(Gallery)
+# admin.site.register(Speaker)
+# admin.site.register(Sponsor)
+# admin.site.register(Faq)
+# admin.site.register(Schedule)
 
 
-@admin.register(Committee)
-class CommitteeAdmin(admin.ModelAdmin):
-    prepopulated_fields = {"slug": ("name",)}
+# @admin.register(Committee)
+# class CommitteeAdmin(admin.ModelAdmin):
+#     prepopulated_fields = {"slug": ("name",)}
 
 
 @admin.register(OTP)
@@ -26,9 +26,9 @@ class PaperAbstractAdmin(admin.ModelAdmin):
     search_fields = ('title', 'authors')
     list_filter = ('created_at', 'theme','presentation')
 
-
-@admin.register(Contact)
-class ContactAdmin(admin.ModelAdmin):
-    list_display = ('name', 'email', 'subject', 'created_at')
-    search_fields = ('name', 'email', 'subject')
-    list_filter = ('created_at',)
+#
+# @admin.register(Contact)
+# class ContactAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'email', 'subject', 'created_at')
+#     search_fields = ('name', 'email', 'subject')
+#     list_filter = ('created_at',)

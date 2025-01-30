@@ -1,16 +1,16 @@
-import razorpay
+import environ
+import json
 import logging
-
+import razorpay
 from django.db import transaction
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import TemplateView
-from .models import Payment
-from base.utils import sendmail
-import environ
-import json
 
+from base.utils import sendmail
+from payment.utils import payment_completed_test
+from .models import Payment
 
 env = environ.Env()
 
@@ -18,7 +18,7 @@ environ.Env.read_env('.env')
 
 # Razorpay client setup
 RAZORPAY_KEY_ID = env.str("RAZORPAY_KEY_ID")
-RAZORPAY_KEY_SECRET =  env.str("RAZORPAY_KEY_SECRET")
+RAZORPAY_KEY_SECRET = env.str("RAZORPAY_KEY_SECRET")
 
 # Razorpay client initialization
 razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
@@ -26,54 +26,57 @@ razorpay_client = razorpay.Client(auth=(RAZORPAY_KEY_ID, RAZORPAY_KEY_SECRET))
 logger = logging.getLogger("payment")
 amount_dict = {
     'id': {
-        'amount': 30000,  # Amount in paisa
+        'amount': 250,
         'currency': 'USD',
-        'name': "International Delegate"
-    }, 'is': {
-        'amount': 15000,
-        'currency': 'USD',
-        'name': "International Student"
+        'name': "Faculty/ Scientist (International)"
     }, 'nd': {
-        'amount': 300000,
+        'amount': 500,
         'currency': 'INR',
-        'name': "National Delegate"
+        'name': "Students"
+    }, 'fs': {
+        'amount': 3000,
+        'currency': 'INR',
+        'name': "Faculty/ Scientist"
     }, 'rs': {
-        'amount': 150000,
+        'amount': 1500,
         'currency': 'INR',
         'name': "Research Scholars"
-    }, 'sp': {
-        'amount': 60000,
+    },
+    'ts': {
+        'amount': 1,
         'currency': 'INR',
-        'name': "Student Participants"
-    }, 'in': {
-        'amount': 100,
-        'currency': 'INR',
-        'name': "Invalid option for testing"
+        'name': "Test"
     },
 }
 
-def get_amount_for_category(self, category):
+
+def get_amount_for_category(category):
     category_data = amount_dict.get(category)
     if category_data:
-        return category_data['amount']  # Returning amount in paisa as per Razorpay requirements
+        return category_data['amount'] * 100 if category_data['currency'] == 'INR' else category_data['amount']
     return None
 
 
 class PaymentView(TemplateView):
     def get(self, request, *args, **kwargs):
-        return render(request, "payment/checkout.html")  # The page with payment form
+        if not request.user.is_authenticated:
+            return redirect('/login/')
+        if payment_completed_test(request.user):
+            return redirect('/abstract/')
+        return render(request, "payment/checkout.html", {
+            'amount_dict': amount_dict
+        })  # The page with payment form
 
     def post(self, request, *args, **kwargs):
         category = request.POST.get('category')
-        amount = self.get_amount_for_category(category)  # Logic to set amount based on category
+        amount = get_amount_for_category(category)  # Logic to set amount based on category
         if not amount:
             return render(request, 'payment/checkout.html', {'err': 'Invalid category selected.'})
 
-        # Create Razorpay order
         order_data = {
-            'amount': amount * 100,  # Razorpay takes the amount in paise
-            'currency': 'INR',
-            'payment_capture': 1
+            'amount': get_amount_for_category(category),
+            'currency': amount_dict[category]['currency'],
+            'payment_capture': 1,
         }
 
         order = razorpay_client.order.create(data=order_data)
@@ -85,7 +88,7 @@ class PaymentView(TemplateView):
             amount=amount,
             currency='INR',
             user=request.user,
-            category=category
+            category=amount_dict[category]['name']
         )
 
         # Pass data to frontend
@@ -94,21 +97,12 @@ class PaymentView(TemplateView):
             'razorpay_order_id': razorpay_order_id,
             'razorpay_key_id': RAZORPAY_KEY_ID,
             'amount': amount,
-            'currency': 'INR'
-        }
-        
-        return render(request, 'payment/confirm_payment.html', context)
+            'currency': 'INR',
+            'amount_display': amount_dict[category]['amount'],
 
-    def get_amount_for_category(self, category):
-        # Set amount based on category (example)
-        category_amount_map = {
-            "id": 5000,
-            "is": 3000,
-            "nd": 1500,
-            "rs": 2000,
-            "sp": 1000,
         }
-        return category_amount_map.get(category, None)
+
+        return render(request, 'payment/confirm_payment.html', context)
 
 
 @csrf_exempt
@@ -167,9 +161,9 @@ def payment_verification(request):
         # Send confirmation email (outside the transaction)
         try:
             sendmail(
-                f"Dear {payment.user.email},\n\nYou have been successfully registered for MARICON-2024.",
+                f"Dear {payment.user.email},\n\nYou have been successfully registered for ICMBGSD-2025.",
                 payment.user.email,
-                "Maricon Registration Fee Payment"
+                "ICMBGSD-2025 Registration Fee Payment"
             )
             logger.info(f"Payment confirmed and email sent to {payment.user.email}")
         except Exception as e:
