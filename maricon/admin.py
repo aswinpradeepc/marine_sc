@@ -4,7 +4,7 @@ from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, C
 
 # admin.site.register(CommitteeMember)
 # admin.site.register(Gallery)
-# admin.site.register(Speaker)
+admin.site.register(Speaker)
 # admin.site.register(Sponsor)
 # admin.site.register(Faq)
 # admin.site.register(Schedule)
