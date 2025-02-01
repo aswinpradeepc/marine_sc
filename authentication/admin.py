@@ -32,7 +32,7 @@ class UserAdmin(admin.ModelAdmin):
     ordering = ('email',)
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        ('Personal info', {'fields': ('full_name', 'mobile_number', 'section')}),
+        ('Personal info', {'fields': ('full_name', 'mobile_number',)}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
