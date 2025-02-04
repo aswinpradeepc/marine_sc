@@ -27,3 +27,4 @@ build/
 env/
 *.pyc
 media/abstracts/
+media/speakers/
