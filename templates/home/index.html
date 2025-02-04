@@ -202,132 +202,31 @@
         </div>
         <div class="row gy-4" data-aos="fade-up" data-aos-delay="600">
             <!-- Speaker Cards -->
+            {% for speaker in speakers %}
             <div class="col-12 col-sm-6 col-md-3 col-lg-3">
                 <div class="card h-100">
                     <div class="ratio ratio-1x1">
-                        <img src="{% static 'img/speakers/1.jpg' %}" class="card-img-top object-fit-cover"
+                        <img src="{{ speaker.image.url }}" class="card-img-top object-fit-cover"
                              style="object-position: top;"
-                             alt="Dr. Biju Kumar">
+                             alt="{{ speaker.name }}">
                     </div>
                     <div class="card-body text-center">
-                        <h5 class="card-title">Dr. Biju Kumar</h5>
-                        <p class="card-text">Professor in the Department of Aquatic Biology & Fisheries</p>
-                        <p class="text-muted">University of Kerala</p>
+                        <h5 class="card-title">{{ speaker.name }}</h5>
+                        <p class="card-text">{{ speaker.description }}</p>
+                        <p class="text-muted">{{ speaker.short_description }}</p>
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="card h-100">
-                    <div class="ratio ratio-1x1">
-                        <img src="{% static 'img/speakers/2.jpg' %}" class="card-img-top object-fit-cover"
-                             style="object-position: top;"
-                             alt="Dr. Bineesh. K. K">
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Dr. Bineesh. K. K</h5>
-                        <p class="card-text">Scientist-E</p>
-                        <p class="text-muted">Zoological Survey of India</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Add similar cards for other speakers -->
-            <!-- Speaker 3 -->
-            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="card h-100">
-                    <div class="ratio ratio-1x1">
-                        <img src="{% static 'img/speakers/3.jpg' %}" class="card-img-top object-fit-cover"
-                             style="object-position: top;"
-                             alt="Dr. Rajesh Ramacchandran">
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Dr. Rajesh Ramacchandran</h5>
-                        <p class="card-text">Associate Professor</p>
-                        <p class="text-muted">IISER MOHALI</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Speaker 4 -->
-            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="card h-100">
-                    <div class="ratio ratio-1x1">
-                        <img src="{% static 'img/speakers/4.jpg' %}" class="card-img-top object-fit-cover"
-                             style="object-position: top;"
-                             alt="Dr. Anas Abdulaziz">
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Dr. Anas Abdulaziz</h5>
-                        <p class="card-text">Senior Principal Scientist</p>
-                        <p class="text-muted">CSIR-National Institute of Oceanography, (Regional centre, Kochi)</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Speaker 4 -->
-            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="card h-100">
-                    <div class="ratio ratio-1x1">
-                        <img src="{% static 'img/speakers/5.jpg' %}" class="card-img-top object-fit-cover"
-                             style="object-position: top;"
-                             alt="Dr. Anas Abdulaziz">
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Dr. Ratheesh Kumar R</h5>
-                        <p class="card-text">Scientist</p>
-                        <p class="text-muted">ICAR-CMFRI</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Speaker 4 -->
-
-            <!-- Speaker 7 -->
-            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="card h-100">
-                    <div class="ratio ratio-1x1">
-                        <img src="{% static 'img/speakers/7.jpg' %}" class="card-img-top object-fit-cover"
-                             style="object-position: top;"
-                             alt="Dr. Anas Abdulaziz">
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Dr. Benjamin Naman C</h5>
-                        <p class="card-text"></p>
-                        <p class="text-muted">USA</p>
-                    </div>
-                </div>
-            </div>
-            <!-- Speaker 8 -->
-            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-                <div class="card h-100">
-                    <div class="ratio ratio-1x1">
-                        <img src="{% static 'img/speakers/8.jpg' %}" class="card-img-top object-fit-cover"
-                             style="object-position: top;"
-                             alt="Dr. Anas Abdulaziz">
-                    </div>
-                    <div class="card-body text-center">
-                        <h5 class="card-title">Dr.Tiago Ferreira Leão</h5>
-                        <p class="card-text">Vale Institute of Technology for Sustainable Development</p>
-                        <p class="text-muted">Brazil</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-sm-6 col-md-3 col-lg-3">
-            <div class="card h-100">
-                <div class="ratio ratio-1x1">
-                    <img src="{% static '\img\speakers/9.jpeg' %}"
-                         class="card-img-top object-fit-cover" style="object-position: top;"
-                         alt="Advisory Member 20">
-                </div>
-                <div class="card-body text-center">
-                    <h5 class="card-title">Prof. Sandi Orlić</h5>
-                    <p class="card-text">Institut Ruđer Bošković,</p>
-                    <p class="text-muted">Croatia</p>
-                </div>
-            </div>
+            {% endfor %}
         </div>
-        </div>
-
-
+            <div class="marquee">
+                <div>
+                <span>Registration Open Now!</span>
+                <span>Abstract Submission is LIVE!</span>
+                <span>Submit your abstract by February 28th</span>
+                </div>
+            </div> 
     </section>
-
-
     <section id="themes" class="py-5">
         <div class="text-center mb-4 fade-in">
             <h2 class="fw-bold">Focal Themes</h2>
@@ -1332,7 +1231,7 @@
                     </div>
                     <div class="card-body text-center">
                         <h5 class="card-title"> Dr.Swapna Antony</h5>
-                        <p class="card-text">Assistant Professor, Dept of Marine Biology Microbiology and
+                        <p class="card-text">Associate Professor, Dept of Marine Biology Microbiology and
                             Biochemistry</p>
                         <p class="text-muted">CUSAT</p>
                     </div>

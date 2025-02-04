@@ -52,8 +52,11 @@ class AbstractView(TemplateView):
 
 class IndexView(AbstractView):
     template_name = 'home/index.html'
-
-
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['speakers'] = Speaker.objects.all()
+        return context
 
 class CommitteeView(AbstractView):
     template_name = 'maricon/committee.html'

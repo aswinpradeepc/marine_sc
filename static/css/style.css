@@ -2122,3 +2122,33 @@ html {
 .overlay-text:hover {
     background: rgba(0, 0, 0, 0.5); /* Darker background on hover */
 }
+/* marquee */
+
+.marquee {
+  height: 25px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: #f0f0f0;
+}
+
+.marquee div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200%;
+  height: 100%;
+  position: absolute;
+  animation: marquee 20s linear infinite;
+  animation-delay: 0s;
+}
+
+.marquee span {
+  display: inline-block;
+  padding: 0 10px;
+}
+
+@keyframes marquee {
+  0% { left: 100%; }
+  100% { left: -100%; }
+}
