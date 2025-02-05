@@ -2152,3 +2152,9 @@ html {
   0% { left: 100%; }
   100% { left: -100%; }
 }
+/* css for the speaker card to have a default dimensions*/
+.speaker-card {
+  width: 270px;
+  min-width: 270px;
+  height: 414px;
+}
