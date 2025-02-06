@@ -735,18 +735,6 @@ h2 {
   gap: 2rem;
 }
 
-.speaker-card {
-  width: 250px; 
-  background: #f9f9f9;
-  padding: 1rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  text-align: center; 
-  transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease; 
-  
-}
-
-
 .card-image img {
   width: 100%;
   height: auto;
