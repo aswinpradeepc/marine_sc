@@ -60,6 +60,7 @@ nav {
   left: 0;
   width: 100%;
   padding: 1rem 2rem;
+  padding: 1rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2128,8 +2129,14 @@ html {
   height: 25px;
   width: 100%;
   overflow: hidden;
-  position: relative;
-  background-color: #f0f0f0;
+  position: fixed;
+  top: 62px;
+  left: 0;
+  font-weight: 100;
+  background-color: #f0f8fa;
+  color: #001933;
+  font-family: 'Inter', sans-serif;
+  z-index: 1050; /* Keeps it above everything */
 }
 
 .marquee div {
