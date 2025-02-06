@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, Committee, OTP, PaperAbstract, Contact
 
 admin.site.register(CommitteeMember)
@@ -39,13 +38,6 @@ class SpeakerAdmin(admin.ModelAdmin):
                 speaker.order = index + 1
                 speaker.save()
         super().save_model(request, obj, form, change)
-    def delete_model(self, request, obj):
-        speakers_gt_order = Speaker.objects.filter(order__gt=obj.order)
-        for speaker in speakers_gt_order:
-            print(f"Decrementing order for speaker with id {speaker.id}")
-            speaker.order -= 1
-            speaker.save()
-        super().delete_model(request, obj)
 
 admin.site.register(Speaker, SpeakerAdmin)
 
