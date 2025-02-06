@@ -36,15 +36,19 @@ def send_email(message, receiver, subject="ICMBGSD 25  Registration/Login verifi
 
 
 class Speaker(models.Model):
+    def get_default_order():
+        return Speaker.objects.count() + 1
+    
     name = models.CharField(max_length=100)
     short_description = models.CharField(max_length=100, default="")
     description = models.CharField(max_length=100)
+    order = models.IntegerField(default=get_default_order)
     image = models.ImageField(upload_to='speakers', null=True, blank=True)
     facebook = models.URLField(max_length=100, null=True, blank=True)
     twitter = models.URLField(max_length=100, null=True, blank=True)
     google_scholar = models.URLField(max_length=100, null=True, blank=True)
     linkedin = models.URLField(max_length=100, null=True, blank=True)
-
+    
     def __str__(self):
         return self.name
 

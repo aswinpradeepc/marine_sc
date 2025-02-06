@@ -4,7 +4,6 @@ from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, C
 
 admin.site.register(CommitteeMember)
 admin.site.register(Gallery)
-admin.site.register(Speaker)
 # admin.site.register(Sponsor)
 # admin.site.register(Faq)
 # admin.site.register(Schedule)
@@ -25,6 +24,30 @@ class PaperAbstractAdmin(admin.ModelAdmin):
     list_display = ('title', 'authors', 'created_at','presentation')
     search_fields = ('title', 'authors')
     list_filter = ('created_at', 'theme','presentation')
+
+class SpeakerAdmin(admin.ModelAdmin):
+    def save_model(self, request, obj, form, change):
+        if change:
+            old_order = form.initial['order']
+        else:
+            old_order = None
+        all_speakers = list(Speaker.objects.all().order_by('order'))
+        if old_order != obj.order:
+            all_speakers = [speaker for speaker in all_speakers if speaker.id != obj.id]
+            all_speakers.insert(obj.order - 1, obj)
+            for index, speaker in enumerate(all_speakers):
+                speaker.order = index + 1
+                speaker.save()
+        super().save_model(request, obj, form, change)
+    def delete_model(self, request, obj):
+        speakers_gt_order = Speaker.objects.filter(order__gt=obj.order)
+        for speaker in speakers_gt_order:
+            print(f"Decrementing order for speaker with id {speaker.id}")
+            speaker.order -= 1
+            speaker.save()
+        super().delete_model(request, obj)
+
+admin.site.register(Speaker, SpeakerAdmin)
 
 #
 # @admin.register(Contact)
