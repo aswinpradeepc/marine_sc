@@ -2,14 +2,6 @@
 
 {% block new_footer %}
 
-<div class="marquee">
-    <div>
-    <span>Registration Open Now!</span>
-    <span>Abstract Submission is LIVE!</span>
-    <span>Submit your abstract by February 28th</span>
-    </div>
-</div>
-
 <nav class="d-flex justify-content-center align-items-center"> 
     <div class="logo-container mx-5">
         <img src="{% static '\img\logos\logo.png'%}" alt="Icon" class="logo" />
@@ -34,6 +26,15 @@
         <a class="btn btn-primary text-white" href="{% url 'register' %}">Register</a>
     </div>
 </nav>
+
+<div class="marquee">
+    <div>
+    <span>Registration Open Now!</span>
+    <span>Abstract Submission is LIVE!</span>
+    <span>Submit your abstract by February 28th</span>
+    </div>
+</div>
+
 
 
 {% endblock new_footer %}
