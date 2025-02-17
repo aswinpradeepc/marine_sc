@@ -50,19 +50,23 @@
         <div id="heroCarousel" class="carousel slide carousel-fade" data-bs-ride="carousel">
             <!-- Carousel Indicators -->
             <div class="carousel-indicators">
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"
-                        aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                {% for i in gallery_count %}
+                <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="{{ i }}" 
+                        class="{% if forloop.first %}active{% endif %}" 
+                        aria-current="{% if forloop.first %}true{% endif %}" 
+                        aria-label="Slide {{ i|add:1 }}"></button>
+                {% endfor %}
             </div>
 
             <!-- Carousel Items -->
             <div class="carousel-inner w-100 vh-100">
+                {% for gallery in galleries %}
                 <!-- First Slide -->
-                <div class="carousel-item active vh-100 position-relative">
+                <div class="carousel-item {% if forloop.first %}active{% endif %} vh-100 position-relative">
                     <!-- Add a dark overlay div -->
                     <div class="position-absolute w-100 h-100 bg-dark" style="opacity: 0.4;"></div>
 
-                    <img src="{% static 'img/logos/1.jpg' %}" class="d-block w-100 h-100 object-fit-cover"
+                    <img src="{{ gallery.image.url }}" class="d-block w-100 h-100 object-fit-cover"
                          alt="Campus View">
                     <div class="carousel-caption d-flex flex-column justify-content-center h-100">
                         <div class="container d-flex justify-content-center align-items-center flex-column">
@@ -89,39 +93,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- Second Slide -->
-                <div class="carousel-item active vh-100 position-relative">
-                    <!-- Add a dark overlay div -->
-                    <div class="position-absolute w-100 h-100 bg-dark" style="opacity: 0.4;"></div>
-
-                    <img src="{% static 'img/logos/2.jpg' %}" class="d-block w-100 h-100 object-fit-cover"
-                         alt="Campus View">
-                    <div class="carousel-caption d-flex flex-column justify-content-center h-100">
-                        <div class="container d-flex justify-content-center align-items-center flex-column">
-                            <h1 class="display-3 fw-bold mb-4">ICMBGSD 25</h1>
-                            <h2 class="display-6 mb-4">International Conference on Marine Biodiversity, Genomics and
-                                Sustainable Development</h2>
-                            <p class="lead mb-5">April 9-11, 2025
-                                School of Marine Sciences, CUSAT</p>
-                            <div class="logos-container row mb-5 gx-3 justify-content-center align-items-center">
-    <div class="col-4 col-md-2">
-        <img src="{% static 'img/logos/logo-1.png' %}" alt="Logo 1" class="agency-logo img-fluid">
-    </div>
-    <div class="col-4 col-md-2">
-        <img src="{% static 'img/logos/logo-2.png' %}" alt="Logo 2" class="agency-logo exact-shape-logo img-fluid">
-    </div>
-    <div class="col-4 col-md-2">
-        <img src="{% static 'img/logos/logo-3.png' %}" alt="Logo 3" class="agency-logo img-fluid">
-    </div>
-</div><div class="d-flex flex-wrap justify-content-center gap-3">
-    <a href="{% static 'doc/Brochure.pdf' %}" class="btn btn-sm btn-outline-light btn-lg px-4 mb-2">Download Brochure</a>
-    <a href="{% static 'doc/Flyer.pdf' %}" class="btn btn-sm btn-outline-light btn-lg px-4 mb-2">Download Flyer</a>
-</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+                {% endfor %}
             <!-- Carousel Controls -->
             <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
