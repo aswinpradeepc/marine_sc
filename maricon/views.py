@@ -43,6 +43,7 @@ class AbstractView(TemplateView):
             },
         ]
         context['themes'] = THEMES
+        context['gallery'] = Gallery.objects.all()
         committees = Committee.objects.only('name').order_by('-size_on_website')
         context['committees'] = committees
 
@@ -55,8 +56,6 @@ class IndexView(AbstractView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['speakers'] = Speaker.objects.all()
-        context['galleries'] = Gallery.objects.all()
-        context['gallery_count'] = range(Gallery.objects.count())
         return context
 
 class CommitteeView(AbstractView):
