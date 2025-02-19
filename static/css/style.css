@@ -2115,37 +2115,40 @@ html {
 
 .marquee {
   height: 25px;
-  width: 100%;
+  width: 100vw;
   overflow: hidden;
   position: fixed;
   top: 62px;
   left: 0;
   font-weight: 100;
   background-color: #f0f8fa;
-  color: #001933;
+  color: #042556;
+  font-weight: bold;
   font-family: 'Inter', sans-serif;
-  z-index: 1050; /* Keeps it above everything */
+  z-index: 1050;
 }
 
 .marquee div {
   display: flex;
-  justify-content: center;
   align-items: center;
-  width: 200%;
+  width: max-content;
   height: 100%;
-  position: absolute;
   animation: marquee 20s linear infinite;
-  animation-delay: 0s;
 }
 
 .marquee span {
   display: inline-block;
   padding: 0 10px;
+  white-space: nowrap;
 }
 
 @keyframes marquee {
-  0% { left: 100%; }
-  100% { left: -100%; }
+  0% { transform: translateX(185%); }
+  100% { transform: translateX(-100%); }
+}
+.marquee img {
+  width: 22px;
+  height: 20px;
 }
 /* css for the speaker card to have a default dimensions*/
 .speaker-card {
