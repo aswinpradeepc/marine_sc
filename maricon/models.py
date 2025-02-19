@@ -119,7 +119,7 @@ class Gallery(models.Model):
     image = models.ImageField(upload_to='gallery', null=True, blank=True)
 
     def __str__(self):
-        return self.name + " - " + self.image.name
+        return self.image.name
 
 
 class Theme(models.Model):
