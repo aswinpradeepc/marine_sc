@@ -2159,11 +2159,28 @@ html {
 
 /* css for gallery */
 
-.image-container img {
-  transition: transform 0.2s ease-in-out;
-  object-fit: cover;
+.underline {
+  width: 60px;
+  height: 4px;
+  background: #000;
+  margin-top: 5px;
+  border-radius: 2px;
 }
 
-.image-container img:hover {
-  transform: scale(1.1);
+.gallery-item {
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
 }
