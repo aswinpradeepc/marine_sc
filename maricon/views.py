@@ -49,6 +49,8 @@ class AbstractView(TemplateView):
 
         return context
 
+class GalleryView(AbstractView):
+    template_name = "home/gallery.html"
 
 class IndexView(AbstractView):
     template_name = 'home/index.html'

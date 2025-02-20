@@ -2156,3 +2156,31 @@ html {
   min-width: 270px;
   height: 414px;
 }
+
+/* css for gallery */
+
+.underline {
+  width: 60px;
+  height: 4px;
+  background: #000;
+  margin-top: 5px;
+  border-radius: 2px;
+}
+
+.gallery-item {
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery-item:hover {
+  transform: scale(1.05);
+}
+
+.overlay {
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.gallery-item:hover .overlay {
+  opacity: 1;
+}
