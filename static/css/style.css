@@ -2156,3 +2156,14 @@ html {
   min-width: 270px;
   height: 414px;
 }
+
+/* css for gallery */
+
+.image-container img {
+  transition: transform 0.2s ease-in-out;
+  object-fit: cover;
+}
+
+.image-container img:hover {
+  transform: scale(1.1);
+}
