@@ -1,6 +1,6 @@
 // Countdown Timer
 function updateCountdown() {
-    const conferenceDate = new Date('March 26, 2025 00:00:00').getTime();
+    const conferenceDate = new Date('February 28, 2025 00:00:00').getTime();
     const now = new Date().getTime();
     const distance = conferenceDate - now;
 
@@ -9,25 +9,17 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById('countdown').innerHTML = `
+    document.getElementById('abstract_countdown').innerHTML = `
         <div>
-            <span>${days}</span>
-            <span>Days</span>
-        </div>
-        <div>
-            <span>${hours}</span>
-            <span>Hours</span>
-        </div>
-        <div>
-            <span>${minutes}</span>
-            <span>Minutes</span>
-        </div>
-        <div>
-            <span>${seconds}</span>
-            <span>Seconds</span>
+            <span>${days < 10 ? '0' + days : days} :</span>
+            <span>${hours < 10 ? '0' + hours : hours} :</span>
+            <span>${minutes < 10 ? '0' + minutes : minutes} :</span>
+            <span>${seconds < 10 ? '0' + seconds : seconds}</span>
         </div>
     `;
 }
+
+var timerInterval = setInterval(updateCountdown, 1000);
 
 
 /*visible effect
