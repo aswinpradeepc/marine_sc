@@ -52,6 +52,9 @@ class AbstractView(TemplateView):
 class GalleryView(AbstractView):
     template_name = "home/gallery.html"
 
+class TravelGrantView(AbstractView):
+    template_name = "home/travel_grant.html"
+
 class IndexView(AbstractView):
     template_name = 'home/index.html'
     
