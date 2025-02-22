@@ -1,9 +1,8 @@
 from django.contrib import admin
 
-from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, Committee, OTP, PaperAbstract, Contact
+from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, Committee, OTP, PaperAbstract, Contact, GalleryImage
 
 admin.site.register(CommitteeMember)
-admin.site.register(Gallery)
 admin.site.register(Speaker)
 # admin.site.register(Sponsor)
 # admin.site.register(Faq)
@@ -26,6 +25,16 @@ class PaperAbstractAdmin(admin.ModelAdmin):
     search_fields = ('title', 'authors')
     list_filter = ('created_at', 'theme','presentation')
 
+#Gallery
+class GalleryImageAdmin(admin.StackedInline):
+    model = GalleryImage
+
+@admin.register(Gallery)
+class GalleryAdmin(admin.ModelAdmin):
+    inlines = [GalleryImageAdmin]
+
+    class meta:
+        model = Gallery
 #
 # @admin.register(Contact)
 # class ContactAdmin(admin.ModelAdmin):

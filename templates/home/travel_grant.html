@@ -1,0 +1,89 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ICMBGSD-2025</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+              integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+    
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+                integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+                integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+                crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    
+        <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+              integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap"
+              rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+    
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+                integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+                crossorigin="anonymous"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    </head>
+<body>
+    {% include 'new_maricon/new_nav.html' %}
+    <div class="mt-5">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <h1 class="text-center mb-4">Travel Grants</h1>
+                <p class="lead">The organizing committee of ICMBGSD2025 is pleased to offer travel grants to selected students participating and presenting their research at the conference. These grants are designed to support promising researchers by compensating their travel expenditures to the conference venue.</p>
+                
+                <h2 class="mt-4">Eligibility Criteria</h2>
+                <ul>
+                    <li>Open to Research Scholars actively engaged in research relevant to the conference themes.</li>
+                    <li>Applicants must be below 35 years of age as of the conference date.</li>
+                    <li>The applicant’s travel distance to the conference venue must exceed 400 km.</li>
+                    <li>The research work being presented should demonstrate significant impact and relevance to the conference themes.</li>
+                    <li>Valid travel expenditure bills must be submitted for reimbursement at the travel desk, located at the conference venue’s registration counter.</li>
+                </ul>
+                
+                <h2 class="mt-4">Grant Benefits</h2>
+                <p>Travel expenses will be reimbursed up to the equivalent cost of a round-trip 3-Tier AC train fare.</p>
+                
+                <h2 class="mt-4">How to Apply</h2>
+                <ol>
+                    <li><strong>Register and Submit Abstracts:</strong> Applicants must first complete their registration and submit their abstracts for consideration.</li>
+                    <li><strong>Apply for the Travel Grant:</strong> Once registered, applicants can apply for the travel grant through the designated option on the conference portal. The application requires the following:
+                        <ul>
+                            <li>Registered details (including registration ID).</li>
+                            <li>Bank details to which the travel reimbursement must be credited.</li>
+                            <li>An updated CV (maximum 2 pages) highlighting academic achievements and research contributions.</li>
+                        </ul>
+                    </li>
+                </ol>
+                
+                <h2 class="mt-4">Additional Information</h2>
+                <ul>
+                    <li>Only selected candidates will be notified and awarded the travel grant.</li>
+                    <li>Further communication regarding grant approval and reimbursement procedures will be provided post-selection.</li>
+                    <li>Selection will be based on a set of criteria determined by the conference committee.</li>
+                    <li>Conference secretariat decision will be final and cannot be contested.</li>
+                </ul>
+                
+                <p class="mt-4 text-center"><strong>We encourage students with impactful research to apply and make the most of this opportunity.</strong></p>
+            </div>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    {% include 'new_maricon/new_footer.html' %}
+</body>
+</html>

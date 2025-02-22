@@ -115,12 +115,14 @@ class CommitteeMember(models.Model):
 
 
 class Gallery(models.Model):
-    name = models.CharField(max_length=100)
-    image = models.ImageField(upload_to='gallery', null=True, blank=True)
+    caption = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.image.name
+        return self.caption
 
+class GalleryImage(models.Model):
+    gallery = models.ForeignKey(Gallery, related_name="images", on_delete=models.CASCADE)
+    image = models.ImageField(default='gallery/')
 
 class Theme(models.Model):
     name = models.CharField(max_length=100)
