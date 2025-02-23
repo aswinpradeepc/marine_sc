@@ -2184,3 +2184,62 @@ html {
 .gallery-item:hover .overlay {
   opacity: 1;
 }
+/* countdown */
+.countdown {
+  padding-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  text-align: center;
+  font: bold 24px Arial, sans-serif;
+}
+
+.countdown div {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #0000005f;
+  min-width: 110px;
+}
+
+.countdown span {
+  display: block;
+  font-weight: bold;
+}
+
+.countdown span:first-child {
+  font-size: 32px;
+  color: white;
+}
+
+.countdown span:last-child {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.digit {
+  color: white;
+  font-size: 28px;
+  padding: 10px;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0px;
+}
+
+.text-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.digit p {
+  font-size: 14px;
+  margin-top: 5px;
+  color: white;
+}
+.button-cont {
+  margin-bottom: 10px;
+}
