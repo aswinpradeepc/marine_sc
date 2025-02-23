@@ -3,6 +3,8 @@ import logging
 from django.contrib import messages
 from django.contrib.auth import login
 from django.http import HttpResponse
+from django.utils import timezone
+from datetime import datetime
 # import send email function
 
 from django.shortcuts import redirect, render
@@ -47,10 +49,29 @@ class AbstractView(TemplateView):
         committees = Committee.objects.only('name').order_by('-size_on_website')
         context['committees'] = committees
 
+        ##time - abstract 28th feb
+        abstract_date = datetime(2025, 2, 28)
+        abstract_date = timezone.make_aware(abstract_date) 
+        abstract_date = abstract_date - timezone.now()
+        days = abstract_date.seconds // 86400
+        hours = abstract_date.seconds // 3600
+        minutes = (abstract_date.seconds % 3600) // 60
+        seconds = abstract_date.seconds % 60
+        abstract_date = {
+            'days': days,
+            'hours': hours,
+            'minutes': minutes,
+            'seconds': seconds
+        }
+        context['abstract_date'] = abstract_date
+
         return context
 
 class GalleryView(AbstractView):
     template_name = "home/gallery.html"
+
+class TravelGrantView(AbstractView):
+    template_name = "home/travel_grant.html"
 
 class IndexView(AbstractView):
     template_name = 'home/index.html'
