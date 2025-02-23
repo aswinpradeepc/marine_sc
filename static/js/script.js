@@ -9,16 +9,28 @@ function updateCountdown() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    document.getElementById('abstract_countdown').innerHTML = `
-        <div>
-            <span>${days < 10 ? '0' + days : days} :</span>
-            <span>${hours < 10 ? '0' + hours : hours} :</span>
-            <span>${minutes < 10 ? '0' + minutes : minutes} :</span>
-            <span>${seconds < 10 ? '0' + seconds : seconds}</span>
-        </div>
+    document.querySelectorAll('.countdown').forEach(element => {
+        element.innerHTML = `
+            <div class="digit text-center w-100 h-100">
+                <span class="days">${days}</span>
+                <p>Days</p>
+            </div>
+            <div class="digit text-center w-100 h-100">
+                <span class="hours">${hours}</span>
+                <p>Hours</p>
+            </div>
+            <div class="digit text-center w-100 h-100">
+                <span class="minutes">${minutes}</span>
+                <p>Minutes</p>
+            </div>
+            <div class="digit text-center w-100 h-100">
+                <span class="seconds">${seconds}</span>
+                <p>Seconds</p>
+            </div>
     `;
-}
 
+    }); 
+}
 var timerInterval = setInterval(updateCountdown, 1000);
 
 
