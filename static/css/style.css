@@ -2243,3 +2243,49 @@ html {
 .button-cont {
   margin-bottom: 10px;
 }
+/* Travel Grant Page Styling */
+.travel-grant-container {
+  margin: 40px auto;
+  padding: 20px;
+}
+
+/* Card Styling */
+.card {
+  border-radius: 10px;
+  overflow: hidden;
+  transition: 0.3s ease-in-out;
+  /* border: 1px solid #0288d1; */
+}
+
+
+/* Title Styling */
+h2 {
+  font-family: "Outfit", sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: #01579b; /* Deep Ocean Blue */
+}
+
+/* List Styling */
+.travel-grant-container ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.travel-grant-container ul li {
+  font-size: 18px;
+  padding-left: 25px;
+  position: relative;
+  margin-bottom: 10px;
+  color: #01579b; /* Deep Blue */
+}
+
+.travel-grant-container ul li::before {
+  content: "\f058";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  color: #0288d1; /* Medium Blue */
+  position: absolute;
+  left: 0;
+  font-size: 20px;
+}
