@@ -1,6 +1,7 @@
 venv
 **/migrations/0*
 **/pychache__*
+pyrightconfig.json
 
 # Environments
 .env

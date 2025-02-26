@@ -5,6 +5,7 @@ from datetime import datetime, timezone, timedelta
 
 from django.db import models
 
+from authentication.models import User
 from config.settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD
 
 THEMES = ["Marine Biodiversity and Conservation",
@@ -199,3 +200,13 @@ class Contact(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.subject}"
+
+class TravelGrant(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="travel_grants")
+    cv = models.FileField(upload_to='cvs/')
+    bank_name = models.CharField(max_length=50)
+    ifsc = models.CharField(max_length=50)
+    acc_number = models.IntegerField()
+
+    def __str__(self):
+        return self.user.get_full_name()
