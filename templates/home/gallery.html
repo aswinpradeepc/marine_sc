@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
 
     <!-- AOS for Animations -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflar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e.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}"/>
@@ -27,31 +27,31 @@
 <body>
     {% include "new_maricon/new_nav.html" %}
 
-    <!-- Gallery Section -->
-    <section class="photo-gallery py-5">
-        <div class="">
-            {% for gallery in gallery %}
-            <div class="row g-4 justify-content-center photos" data-aos="fade-up" data-bss-baguettebox>
-                <div class="text-center mb-4 fade-in">
-                    <h2 class="fw-bold">{{ gallery.caption }}</h2>
-                    <div class="underline mx-auto"></div>
-                </div>
-                {% for obj in gallery.images.all %}
-                <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
-                    <div class="gallery-item overflow-hidden position-relative rounded shadow-sm" style="width: 100%; max-width: 350px;">
-                        <a href="{{ obj.image.url }}">
-                            <img src="{{ obj.image.url }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover; height: 250px;">
-                            <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
-                                <i class="fas fa-search-plus text-white fs-2"></i>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                {% endfor %}
-            {% endfor %}
+<!-- Gallery Section -->
+<section class="photo-gallery py-5">
+    <div class="">
+        {% for gallery in gallery %}
+        <div class="row g-4 justify-content-center photos" data-aos="fade-up" data-bss-baguettebox>
+            <div class="text-center mb-4 fade-in">
+                <h2 class="fw-bold">{{ gallery.caption }}</h2>
+                <div class="underline mx-auto"></div>
             </div>
-        </div>
-    </section>
+            {% for obj in gallery.images.all %}
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3 d-flex justify-content-center">
+                <div class="gallery-item overflow-hidden position-relative rounded shadow-sm" style="width: 100%; max-width: 350px;">
+                    <a href="{{ obj.image.url }}">
+                        <img src="{{ obj.image.url }}" class="img-fluid rounded w-100 h-100" style="object-fit: cover; height: 250px;">
+                        <div class="overlay position-absolute top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center">
+                            <i class="fas fa-search-plus text-white fs-2"></i>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div> 
+        {% endfor %}
+    </div>
+</section>
 
     {% include "new_maricon/new_footer.html" %}
 

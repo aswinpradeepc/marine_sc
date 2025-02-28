@@ -2,8 +2,10 @@ import logging
 
 from django.contrib import messages
 from django.contrib.auth import login
-from django.http import HttpResponse
+from django.db.transaction import TransactionManagementError
+from django.http import HttpResponse, request
 from django.utils import timezone
+from django.core.exceptions import ObjectDoesNotExist
 from datetime import datetime
 # import send email function
 
@@ -14,11 +16,10 @@ from django.views.generic import TemplateView
 from base.utils import sendmail
 from authentication.forms import SignUpForm
 from authentication.models import User
-from base.utils import sendmail
 from payment.utils import payment_completed
-from .forms import PaperAbstractForm
+from .forms import PaperAbstractForm, TravelGrantForm
 from .models import Faq, Sponsor, Schedule, Gallery, CommitteeMember, Committee, OTP, PaperAbstract, Speaker, \
-    THEMES, Contact
+    THEMES, Contact, TravelGrant
 
 logger = logging.getLogger("db")
 
@@ -48,22 +49,6 @@ class AbstractView(TemplateView):
         context['gallery'] = Gallery.objects.all()
         committees = Committee.objects.only('name').order_by('-size_on_website')
         context['committees'] = committees
-
-        ##time - abstract 28th feb
-        abstract_date = datetime(2025, 2, 28)
-        abstract_date = timezone.make_aware(abstract_date) 
-        abstract_date = abstract_date - timezone.now()
-        days = abstract_date.seconds // 86400
-        hours = abstract_date.seconds // 3600
-        minutes = (abstract_date.seconds % 3600) // 60
-        seconds = abstract_date.seconds % 60
-        abstract_date = {
-            'days': days,
-            'hours': hours,
-            'minutes': minutes,
-            'seconds': seconds
-        }
-        context['abstract_date'] = abstract_date
 
         return context
 
@@ -356,6 +341,46 @@ def contact_form(request):
 
         # Redirect or show success message
         return redirect('/')
+
+
+class ApplyTravelGrantView(AbstractView):
+    template_name = "home/apply_travel_grant.html"
+
+    def get(self, request):
+        form = TravelGrantForm()
+        return render(request, self.template_name, {'form': form})
+
+    def post(self, request):
+        form = TravelGrantForm(request.POST, request.FILES)
+        if form.is_valid():
+            form_data = form.cleaned_data
+            file = request.FILES.get('cv')
+            try:
+                user = User.objects.get(email=form_data['email'])
+            except ObjectDoesNotExist:
+                messages.error(request, "Enter a registered E-mail ID!")
+                return render(request, self.template_name, {'form': form})
+
+            if file and not file.name.lower().endswith('.pdf'):
+                messages.error(request, "Only PDF files are allowed.")
+                return render(request, self.template_name, {'form': form})
+
+            if len(form_data['ifsc']) != 11:
+                messages.error(request, "Invalid IFSC Code!")
+                return render(request, self.template_name, {'form': form})
+
+            acc_number_str = str(form_data['acc_number'])
+            if not acc_number_str.isdigit() or not (9 <= len(acc_number_str) <= 18):
+                messages.error(request, "Invalid Account Number!")
+                return render(request, self.template_name, {'form': form})
+
+            travel_grant = form.save(commit=False)
+            travel_grant.user = user
+            travel_grant.save()
+
+            messages.success(request, 'Success!!')
+            return redirect('apply_travel_grant')  
+
 
 
 class PrivacyPolicyView(AbstractView):
