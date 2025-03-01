@@ -1,25 +1,19 @@
 import logging
-
 from django.contrib import messages
 from django.contrib.auth import login
-from django.db.transaction import TransactionManagementError
-from django.http import HttpResponse, request
-from django.utils import timezone
-from django.core.exceptions import ObjectDoesNotExist
-from datetime import datetime
-# import send email function
-
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, View
 
 from base.utils import sendmail
 from authentication.forms import SignUpForm
 from authentication.models import User
 from payment.utils import payment_completed
 from .forms import PaperAbstractForm, TravelGrantForm
-from .models import Faq, Sponsor, Schedule, Gallery, CommitteeMember, Committee, OTP, PaperAbstract, Speaker, \
-    THEMES, Contact, TravelGrant
+from .models import (
+    Faq, Sponsor, Schedule, Gallery, CommitteeMember, Committee, OTP,
+    PaperAbstract, Speaker, THEMES, Contact, TravelGrant, User
+)
 
 logger = logging.getLogger("db")
 
@@ -342,22 +336,6 @@ def contact_form(request):
         # Redirect or show success message
         return redirect('/')
 
-
-from django.shortcuts import render, redirect
-from django.views import View
-from django.contrib import messages
-from .forms import TravelGrantForm
-from .models import User, TravelGrant
-
-
-from django.shortcuts import render, redirect
-from django.views import View
-from django.contrib import messages
-from django.core.exceptions import ObjectDoesNotExist
-from .forms import TravelGrantForm
-from .models import User, TravelGrant
-
-
 class ApplyTravelGrantView(View):
     template_name = "home/apply_travel_grant.html"
 
@@ -408,6 +386,12 @@ class ApplyTravelGrantView(View):
         travel_grant.user = user
         travel_grant.save()
 
+        sendmail(
+            message="Your Travel Grant application has been received successfully! We will review your submission and update you soon.",
+            recipient_email=form_data['email'],
+            subject="Travel Grant Application Received"
+        )
+    
         messages.success(request, 'Application submitted successfully!')
         return redirect('apply_travel_grant')
 
