@@ -42,11 +42,11 @@ amount_dict = {
         'currency': 'INR',
         'name': "Research Scholars"
     },
-    'ts': {
-        'amount': 1,
-        'currency': 'INR',
-        'name': "Test"
-    },
+    # 'ts': {
+    #     'amount': 1,
+    #     'currency': 'INR',
+    #     'name': "Test"
+    # },
 }
 
 
