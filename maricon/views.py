@@ -387,7 +387,7 @@ class ApplyTravelGrantView(View):
 
         # Validate Account Number
         acc_number_str = str(form_data['acc_number'])
-        if not acc_number_str.isdigit() or not (9 <= len(acc_number_str) <= 18):
+        if not acc_number_str.isdigit():
             messages.error(request, "Invalid Account Number!")
             return render(request, self.template_name, {'form': form})
 
