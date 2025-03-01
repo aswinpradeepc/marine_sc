@@ -343,7 +343,22 @@ def contact_form(request):
         return redirect('/')
 
 
-class ApplyTravelGrantView(AbstractView):
+from django.shortcuts import render, redirect
+from django.views import View
+from django.contrib import messages
+from .forms import TravelGrantForm
+from .models import User, TravelGrant
+
+
+from django.shortcuts import render, redirect
+from django.views import View
+from django.contrib import messages
+from django.core.exceptions import ObjectDoesNotExist
+from .forms import TravelGrantForm
+from .models import User, TravelGrant
+
+
+class ApplyTravelGrantView(View):
     template_name = "home/apply_travel_grant.html"
 
     def get(self, request):
@@ -352,34 +367,49 @@ class ApplyTravelGrantView(AbstractView):
 
     def post(self, request):
         form = TravelGrantForm(request.POST, request.FILES)
-        if form.is_valid():
-            form_data = form.cleaned_data
-            file = request.FILES.get('cv')
-            try:
-                user = User.objects.get(email=form_data['email'])
-            except ObjectDoesNotExist:
-                messages.error(request, "Enter a registered E-mail ID!")
-                return render(request, self.template_name, {'form': form})
 
-            if file and not file.name.lower().endswith('.pdf'):
-                messages.error(request, "Only PDF files are allowed.")
-                return render(request, self.template_name, {'form': form})
+        if not form.is_valid():
+            messages.error(request, "Invalid form submission!")
+            return render(request, self.template_name, {'form': form})
 
-            if len(form_data['ifsc']) != 11:
-                messages.error(request, "Invalid IFSC Code!")
-                return render(request, self.template_name, {'form': form})
+        form_data = form.cleaned_data
+        file = request.FILES.get('cv')
 
-            acc_number_str = str(form_data['acc_number'])
-            if not acc_number_str.isdigit() or not (9 <= len(acc_number_str) <= 18):
-                messages.error(request, "Invalid Account Number!")
-                return render(request, self.template_name, {'form': form})
+        # Validate PDF upload
+        if file and not file.name.lower().endswith('.pdf'):
+            messages.error(request, "Only PDF files are allowed.")
+            return render(request, self.template_name, {'form': form})
 
-            travel_grant = form.save(commit=False)
-            travel_grant.user = user
-            travel_grant.save()
+        # Validate IFSC Code
+        if len(form_data['ifsc']) != 11:
+            messages.error(request, "Invalid IFSC Code!")
+            return render(request, self.template_name, {'form': form})
 
-            messages.success(request, 'Success!!')
-            return redirect('apply_travel_grant')  
+        # Validate Account Number
+        acc_number_str = str(form_data['acc_number'])
+        if not acc_number_str.isdigit() or not (9 <= len(acc_number_str) <= 18):
+            messages.error(request, "Invalid Account Number!")
+            return render(request, self.template_name, {'form': form})
+
+        # Validate User Existence
+        try:
+            user = User.objects.get(email=form_data['email'])
+        except User.DoesNotExist:
+            messages.error(request, "Enter a registered E-mail ID!")
+            return render(request, self.template_name, {'form': form})
+
+        # Check if user has already applied
+        if TravelGrant.objects.filter(user=user).exists():
+            messages.error(request, "You have already applied for a travel grant!")
+            return render(request, self.template_name, {'form': form})
+
+        # Save Travel Grant Application
+        travel_grant = form.save(commit=False)
+        travel_grant.user = user
+        travel_grant.save()
+
+        messages.success(request, 'Application submitted successfully!')
+        return redirect('apply_travel_grant')
 
 
 
