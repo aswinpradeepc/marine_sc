@@ -206,7 +206,7 @@ class TravelGrant(models.Model):
     cv = models.FileField(upload_to='cvs/')
     bank_name = models.CharField(max_length=50)
     ifsc = models.CharField(max_length=50)
-    acc_number = models.IntegerField()
+    acc_number = models.CharField(max_length=50)
 
     def __str__(self):
         return self.user.get_full_name()
