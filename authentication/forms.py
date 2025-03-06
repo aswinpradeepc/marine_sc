@@ -9,10 +9,11 @@ class SignUpForm(forms.ModelForm):
     GENDER_CHOICES = [('male', 'Male'), ('female', 'Female'), ('other', 'Other')]
     gender = forms.ChoiceField(choices=GENDER_CHOICES, required=True)
     mobile_number = forms.CharField(max_length=15, help_text='Enter your mobile number', required=True)
-
+    institiution = forms.CharField(max_length=50,  help_text='Enter your College/Institiution', required=True)
+    
     class Meta:
         model = User
-        fields = ('full_name', 'email', 'gender', 'mobile_number')
+        fields = ('full_name', 'institiution', 'email', 'gender', 'mobile_number')
 
     def clean_email(self):
         email = self.cleaned_data['email']
