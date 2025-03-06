@@ -26,7 +26,7 @@ def is_sha256_hash(text):
 
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('email', 'full_name', 'mobile_number', 'is_active', 'is_staff', 'is_superuser')
+    list_display = ('email', 'full_name', 'mobile_number', 'institiution', 'is_active', 'is_staff', 'is_superuser')
     list_filter = ('is_active', 'is_staff', 'is_superuser')
     search_fields = ('email', 'full_name', 'mobile_number')
     ordering = ('email',)

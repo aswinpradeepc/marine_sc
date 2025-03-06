@@ -16,7 +16,7 @@ class TravelGrantForm(forms.ModelForm):
 
     class Meta:
         model = TravelGrant
-        fields = ['email', 'bank_name', 'acc_number', 'ifsc', 'cv']
+        fields = ['email','bank_name', 'acc_number', 'ifsc', 'cv']
         labels = {
             'email': 'E-Mail',
             'bank_name': 'Bank Name',

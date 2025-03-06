@@ -105,6 +105,7 @@ class RegisterView(AbstractView):
                 user.full_name = form.cleaned_data['full_name']
                 user.gender = form.cleaned_data['gender']
                 user.mobile_number = form.cleaned_data['mobile_number']
+                user.institiution = form.cleaned_data['institiution']
                 user.save()
                 messages.success(request, 'Account created successfully.')
                 context = self.get_context_data()

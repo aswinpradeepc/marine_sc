@@ -207,6 +207,7 @@ class TravelGrant(models.Model):
     bank_name = models.CharField(max_length=50)
     ifsc = models.CharField(max_length=50)
     acc_number = models.CharField(max_length=50)
+    institiution = models.CharField(max_length=50, blank=False, null=False, default="College/Institiution")
 
     def __str__(self):
         return self.user.get_full_name()
