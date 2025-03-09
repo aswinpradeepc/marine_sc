@@ -37,3 +37,4 @@ uritemplate==4.1.1
 urllib3==2.3.0
 gunicorn==23.0.0
 psycopg2==2.9.10
+django-import-export==4.3.7

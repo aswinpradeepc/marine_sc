@@ -76,6 +76,7 @@ THIRD_PARTY_APPS = [
     'drf_yasg',
     'rest_framework_simplejwt',
     'django_filters',
+    'import_export',
 ]
 
 # Custom apps
