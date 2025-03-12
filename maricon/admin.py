@@ -1,8 +1,10 @@
 from django.contrib import admin
 
-from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, Committee, OTP, PaperAbstract, Contact, GalleryImage, TravelGrant
+from .models import CommitteeMember, Gallery, Speaker, Sponsor, Faq, Schedule, Committee, OTP, PaperAbstract, Contact, GalleryImage, TravelGrant, AccommodationApplication
+
 
 admin.site.register(CommitteeMember)
+admin.site.register(AccommodationApplication)
 admin.site.register(Speaker)
 admin.site.register(TravelGrant)
 # admin.site.register(Sponsor)

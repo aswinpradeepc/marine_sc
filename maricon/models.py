@@ -211,3 +211,15 @@ class TravelGrant(models.Model):
 
     def __str__(self):
         return self.user.get_full_name()
+    
+designations = [
+            ('STUDENT', 'Student'),
+            ('RESEARCHSCHOLAR', 'Research Scholar'),
+            ('RESEARCHFACULTY', 'Research Faculty')
+        ]
+class AccommodationApplication(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="accoomodation_applications")
+    institiution = models.CharField(max_length=50, blank=False, null=False, default="College/Institiution")
+    designation = models.CharField(choices=designations, max_length=15, default='')
+    def __str__(self):
+        return self.user.get_full_name()
