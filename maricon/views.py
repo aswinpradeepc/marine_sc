@@ -1,4 +1,5 @@
 import logging
+import re
 from django.contrib import messages
 from django.contrib.auth import login
 from django.shortcuts import redirect, render
@@ -12,7 +13,7 @@ from payment.utils import payment_completed
 from .forms import PaperAbstractForm, TravelGrantForm
 from .models import (
     Faq, Sponsor, Schedule, Gallery, CommitteeMember, Committee, OTP,
-    PaperAbstract, Speaker, THEMES, Contact, TravelGrant, User
+    PaperAbstract, Speaker, THEMES, Contact, TravelGrant, User, AccommodationApplication
 )
 
 logger = logging.getLogger("db")
@@ -396,7 +397,38 @@ class ApplyTravelGrantView(View):
         messages.success(request, 'Application submitted successfully!')
         return redirect('apply_travel_grant')
 
+class AccommodationView(TemplateView):
+    template_name = "home/accommodation.html"
 
+    def post(self, request):
+        ph_number = request.POST.get("mobile_number", "").strip()
+        email = request.POST.get("email", "").strip()
+
+        if request.POST.get('designation') not in ['STUDENT', 'RESEARCHSCHOLAR', 'RESEARCHFACULTY']:
+            messages.error(request, "Invalid Request!")
+            return redirect('accommodation')
+
+        if not ph_number or not email:
+            messages.error(request, "Both Email and Phone Number are required!")
+            return redirect("accommodation")
+
+        if not re.fullmatch(r"^\d{10}$", ph_number):
+            messages.error(request, "Enter a valid 10-digit Phone Number!")
+            return redirect("accommodation")
+
+        try:
+            user = User.objects.get(email=email, mobile_number=ph_number)
+            AccommodationApplication.objects.create(
+                user=user,
+                institiution=user.institiution,
+                designation=request.POST['designation']
+            )
+            messages.success(request, "Application Submitted!")
+            
+        except User.DoesNotExist:
+            messages.error(request, "Invalid Email ID or Phone Number!")
+
+        return redirect("accommodation")
 
 class PrivacyPolicyView(AbstractView):
     template_name = 'home/privacy_policy.html'
