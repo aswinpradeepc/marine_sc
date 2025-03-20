@@ -62,7 +62,7 @@ class PaymentView(TemplateView):
         if not request.user.is_authenticated:
             return redirect('/login/')
         if payment_completed_test(request.user):
-            return redirect('/abstract/')
+            return redirect('/abstract_closed/')
         return render(request, "payment/checkout.html", {
             'amount_dict': amount_dict
         })  # The page with payment form
@@ -172,7 +172,7 @@ def payment_verification(request):
 
         return JsonResponse({
             'success': True,
-            'redirect_url': '/abstract/?payment=success'
+            'redirect_url': '/abstract_closed/'
         })
 
     except razorpay.errors.SignatureVerificationError as e:

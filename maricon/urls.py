@@ -2,9 +2,9 @@ from django.urls import path
 
 from .views import (IndexView, RegisterView, OtpView, LoginView,
                     submission_view, TeamView, RefundView, TermsView,
-                    PrivacyPolicyView, DisclaimerView, PosterGuidelinesView, 
-                    AbstractGuidelinesView,contact_form, GalleryView,
-                    TravelGrantView, ApplyTravelGrantView, AccommodationView)
+                    PrivacyPolicyView, DisclaimerView, PosterGuidelinesView,
+                    AbstractGuidelinesView, contact_form, GalleryView,
+                    TravelGrantView, ApplyTravelGrantView, AccommodationView, AbstracSubmissionClosedView)
 
 urlpatterns = [
     path('', IndexView.as_view(), name='maricon'),
@@ -25,5 +25,6 @@ urlpatterns = [
     path('poster-guidelines/', PosterGuidelinesView.as_view(), name='poster-guidelines'),
     path('abstract-guidelines/', AbstractGuidelinesView.as_view(), name='abstract-guidelines'),
     path('accommodation/', AccommodationView.as_view(), name='accommodation'),
-    path('conatct_form', contact_form, name='contact_form'),
+    path('conatct_form/', contact_form, name='contact_form'),
+    path('abstract_closed/', AbstracSubmissionClosedView.as_view(), name='abstract_closed'),
 ]

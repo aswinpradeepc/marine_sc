@@ -143,7 +143,7 @@ class OtpView(AbstractView):
         if otp_obj.exists() and otp_obj.first().is_valid():
             logger.debug(f"otp is valid login user {otp_obj.first().user}")
             login(request, otp_obj.first().user)
-            return redirect('submission')
+            return redirect('/payment')
         else:
             logger.debug("invalid otp err sent")
             context = self.get_context_data()
@@ -451,3 +451,7 @@ class AbstractGuidelinesView(AbstractView):
 class DisclaimerView(AbstractView):
     template_name = 'new_maricon/disclaimer.html'
 
+
+
+class AbstracSubmissionClosedView(TemplateView):
+    template_name = 'new_maricon/abstract_closed.html'
