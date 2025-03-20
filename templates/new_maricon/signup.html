@@ -62,6 +62,12 @@
                         {% if form.errors %}
                             <div class="alert alert-danger" role="alert">
                                 There was an error with your submission. Please check the form and try again.
+                            {% for field, errors in form.errors.items %}
+                                <strong>{{ field }}</strong>
+                                {% for error in errors %}
+                                    <p class="text-danger">{{ error }}</p>
+                                {% endfor %}
+                            {% endfor %}
                             </div>
                         {% endif %}
                         {% if form.full_name.errors %}
