@@ -1,7 +1,9 @@
+import csv
 import re
 
 from django.contrib import admin
-
+from django.http import HttpResponse
+from payment.models import Payment
 from authentication.models import User
 
 
@@ -24,18 +26,53 @@ def is_sha256_hash(text):
     return False
 
 
+
+def export_participants(self, request, queryset):
+    try:
+        field_names = ['full_name', 'email', 'mobile_number', 'institiution', 'payment_status']
+
+        response = HttpResponse(content_type='text/csv')
+        response['Content-Disposition'] = 'attachment; filename=participants.csv'
+        writer = csv.writer(response)
+        writer.writerow(field_names)
+
+        for obj in queryset:
+            row = []
+            for field in field_names:
+                # Handle method fields like `payment_status`
+                if hasattr(self, field) and callable(getattr(self, field)):
+                    value = getattr(self, field)(obj)
+                else:
+                    value = getattr(obj, field, '')
+                row.append(value)
+            writer.writerow(row)
+
+        return response
+    except Exception as e:
+        print("Error exporting participants:", e)
+
+
 @admin.register(User)
 class UserAdmin(admin.ModelAdmin):
-    list_display = ('email', 'full_name', 'mobile_number', 'institiution', 'is_active', 'is_staff', 'is_superuser')
+    list_display = ('email', 'full_name', 'mobile_number', 'institiution','payment_status')
     list_filter = ('is_active', 'is_staff', 'is_superuser')
     search_fields = ('email', 'full_name', 'mobile_number')
     ordering = ('email',)
+    actions = [export_participants]
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
         ('Personal info', {'fields': ('full_name', 'mobile_number',)}),
         ('Permissions', {'fields': ('is_active', 'is_staff', 'is_superuser')}),
         ('Important dates', {'fields': ('last_login', 'date_joined')}),
     )
+
+    def payment_status(self, obj):
+        payments = Payment.objects.filter(user=obj)
+        for payment in payments:
+            if payment.status == "success":
+                return "SUCCESS"
+        else:
+            return "FAILED"
 
     def save_model(self, request, obj, form, change):
         # Get the password from the form if provided
